@@ -11,7 +11,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
-
     
 def get_host_writes(filename):
     text = ""
@@ -35,7 +34,8 @@ def get_flash_writes(filename):
     total = int(total, 16) * 512
     text += "Flash Writes   (Bytes): " + str(total) + "\n"
     return (total, text)
-    
+
+
 def get_total_erase_count(filename):
     text = ""
     text += "Erase Count      (hex): "
@@ -44,24 +44,26 @@ def get_total_erase_count(filename):
     total = int(total, 16)
     text += "Erase Count   (blocks): " + str(total) + "\n"
     return (total, text)
-    
+
+
 def get_erase_block_size(capacity):
     capacity = int(capacity)
     mb_12 = 12 * 1024 * 1024
     size = 0
     
     # 16MB * number of CE * number of planes * MAGIC
-    if (capacity > 512): # 1TB
+    if (capacity > 512):  # 1TB
         size = mb_12 * 32 * 2
-    elif (capacity > 256): # 512GB
+    elif (capacity > 256):  # 512GB
         size = mb_12 * 16 * 2
-    elif (capacity > 128): # 256GB
+    elif (capacity > 128):  # 256GB
         size = mb_12 * 8 * 2
-    else: # 128GB
+    else:  # 128GB
         size = mb_12 * 4 * 2 
         
     return size
-    
+
+
 def main():
 
     root = tkinter.Tk()
@@ -82,7 +84,8 @@ def main():
     else:
         exit(0)
         
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select BEFORE Test Log Page C0 (Vendor SMART)',
+    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+                                               title='Select BEFORE Test Log Page C0 (Vendor SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
     if root.filename:
@@ -90,7 +93,8 @@ def main():
     else:
         exit(0)
         
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select AFTER Test Log Page C0 (Vendor SMART)',
+    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+                                               title='Select AFTER Test Log Page C0 (Vendor SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
     if root.filename:
@@ -169,12 +173,14 @@ def main():
         
     print(text)
 
+
 def test_erase_counts():
 
     root = tkinter.Tk()
     root.withdraw()
         
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select BEFORE Test Log Page C0 (Vendor SMART)',
+    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+                                               title='Select BEFORE Test Log Page C0 (Vendor SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
     if root.filename:
@@ -182,7 +188,8 @@ def test_erase_counts():
     else:
         exit(0)
         
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select AFTER Test Log Page C0 (Vendor SMART)',
+    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+                                               title='Select AFTER Test Log Page C0 (Vendor SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
     if root.filename:
@@ -199,13 +206,12 @@ def test_erase_counts():
     flash_writes = get_flash_writes(after_VendorSMART_file) - flash_writes
     print("ERASE COUNT AFTER")
     erase_count = get_total_erase_count(after_VendorSMART_file) - erase_count
-    
-    
+
     block_size = flash_writes / erase_count
     print("\nAssuming Flash Writes ~= Erase Count")
     print("Erase Block size should = Flash Writes / Erase Count")
     print("Flash Writes / Erase Count = " + str(block_size))
- 
+
+
 if (__name__ == "__main__"):
     main()
-    

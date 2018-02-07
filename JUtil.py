@@ -213,6 +213,7 @@ class Menu:
 
         return self.menuItems[self.currSelection][0]
 
+    @staticmethod
     def generateMenuFile(filePath, options, commands):
         f = open(filePath, "w")
         for i in range(len(options)):
@@ -220,6 +221,7 @@ class Menu:
             f.write(commands[i] + "\n")
         f.close()
 
+    @staticmethod
     def generateEmptyCommand(toKeepRunning=True):
         if (toKeepRunning):
             command = ">stack.append(True)"

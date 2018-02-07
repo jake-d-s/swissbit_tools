@@ -1,17 +1,18 @@
 import winsound
+
+
 class Letter():
-    soundpath = "C:\\LearnArabic331\\alphabet\\Sound\\Bracket0\\" 
-    
+    soundpath = "C:\\LearnArabic331\\alphabet\\Sound\\Bracket0\\"
+
     def __init__(self, file_name, file_extension=".wav"):
         self.file_path = Letter.soundpath + file_name + file_extension
         self.name = file_name
-        
+
     def play_sound(self):
         winsound.PlaySound(self.file_path, winsound.SND_FILENAME)
 
-def ListenArabic():
-    
 
+def ListenArabic():
     alif = Letter("alif")
     ba = Letter("ba")
 
@@ -24,7 +25,7 @@ def ListenArabic():
     # funcs = {alif.name: alif.play_sound, ba.name: ba.play_sound}
     # 
     # NEW WAY #2 (and the better way in my opinion)
-    
+
     letters = [alif, ba]
     funcs = {}
     for letter in letters:
@@ -36,5 +37,6 @@ def ListenArabic():
     # gm = GameMenu(screen, funcs.keys(), funcs)
     # 
     # gm.run()
+
 
 ListenArabic()

@@ -9,25 +9,25 @@ from colorama import Fore, Back, Style
 
 
 class Kbd:
-    UP      = (True, 72)
-    DOWN    = (True, 80)
-    LEFT    = (True, 75)
-    RIGHT   = (True, 77)
-    ENTER   = 13
-    ESC     = 27
+    UP = (True, 72)
+    DOWN = (True, 80)
+    LEFT = (True, 75)
+    RIGHT = (True, 77)
+    ENTER = 13
+    ESC = 27
     SPEC_ORD = 224
 
     @staticmethod
     def getArrow():
         while (not msvcrt.kbhit()):
-            pass #Wait
+            pass  # Wait
 
         char = msvcrt.getch()
         ord_char = ord(char)
 
-        if(ord_char == Kbd.ESC):
+        if (ord_char == Kbd.ESC):
             Utilities.abandonShip()
-        elif(ord_char == Kbd.SPEC_ORD):
+        elif (ord_char == Kbd.SPEC_ORD):
             dr = ord(msvcrt.getch())
 
             if (dr == Kbd.UP[1]):
@@ -47,14 +47,14 @@ class Kbd:
     def getKey():
 
         while (not msvcrt.kbhit()):
-            pass #Wait
+            pass  # Wait
 
         char = msvcrt.getch()
         ord_char = ord(char)
 
-        if(ord_char == Kbd.ESC):
+        if (ord_char == Kbd.ESC):
             Utilities.abandonShip()
-        elif(ord_char == Kbd.SPEC_ORD):
+        elif (ord_char == Kbd.SPEC_ORD):
             dr = ord(msvcrt.getch())
 
             if (dr == Kbd.UP[1]):
@@ -73,7 +73,7 @@ class Kbd:
 
 class Menu:
 
-    def __init__ (self, filepath):
+    def __init__(self, filepath):
         self.menuItems = []
         self.selected = Fore.GREEN + Style.NORMAL
         self.unselected = Fore.BLUE + Style.NORMAL
@@ -81,20 +81,20 @@ class Menu:
         self.chosenAndSelected = Fore.YELLOW + Style.BRIGHT
         self.header = ""
         self.currSelection = 0
-        self.scrollWindowSize = (20 - 1) #written this way because index from 0
+        self.scrollWindowSize = (20 - 1)  # written this way because index from 0
         self.endScroll = 0
         self.scrollWindowTop = 0
         self.scrollWindowBottom = self.scrollWindowSize
 
-        option = [] #[Display Name, Chosen, Command 0,...,Command n]
+        option = []  # [Display Name, Chosen, Command 0,...,Command n]
         counter = 0
-        f = open(filepath,"r")
+        f = open(filepath, "r")
         firstOption = True
         for line in f:
             if (not firstOption):
-                if(line[0] == '>'):
+                if (line[0] == '>'):
                     option.append(line.lstrip('>').rstrip('\n'))
-                elif(line[0:3] == "***"):
+                elif (line[0:3] == "***"):
                     self.endScroll = counter
                 else:
                     self.menuItems.append(option)
@@ -110,13 +110,13 @@ class Menu:
         f.close()
 
     def scrollWindow(self):
-        if(self.currSelection < self.scrollWindowTop):
+        if (self.currSelection < self.scrollWindowTop):
             self.scrollWindowTop = self.currSelection
             self.scrollWindowBottom = self.scrollWindowSize
-        elif(self.currSelection >= self.endScroll):
+        elif (self.currSelection >= self.endScroll):
             self.scrollWindowBottom = self.endScroll
             self.scrollWindowTop = self.endScroll - self.scrollWindowSize - 1
-        elif(self.currSelection > self.scrollWindowBottom):
+        elif (self.currSelection > self.scrollWindowBottom):
             self.scrollWindowBottom = self.currSelection
             self.scrollWindowTop = self.endScroll - self.scrollWindowSize - 1
 
@@ -142,7 +142,7 @@ class Menu:
 
         for index in range(len(self.menuItems)):
             if (index < self.scrollWindowTop or
-                (self.scrollWindowBottom < index < self.endScroll)):
+                    (self.scrollWindowBottom < index < self.endScroll)):
                 pass
 
             elif (index == currSel):
@@ -151,7 +151,7 @@ class Menu:
                 else:
                     print(self.selected + self.option(index))
 
-            elif (self.isChosen(index)): #Chosen
+            elif (self.isChosen(index)):  # Chosen
                 print(self.chosen + self.option(index))
 
             else:
@@ -162,7 +162,7 @@ class Menu:
         print(self.unselected)
         os.system('cls')
         for i in range(len(commandList) - 2):
-            exec(commandList[i+2])
+            exec(commandList[i + 2])
 
     def isChosen(self, index):
         return self.menuItems[index][1]
@@ -171,7 +171,7 @@ class Menu:
         return self.menuItems[index][0]
 
     def toggleChosen(self, index):
-        if(self.menuItems[index][1]):
+        if (self.menuItems[index][1]):
             self.menuItems[index][1] = False
         else:
             self.menuItems[index][1] = True
@@ -185,12 +185,12 @@ class Menu:
     def run(self):
         self.update()
         keepRunning = True
-        while(keepRunning):
+        while (keepRunning):
             key = Kbd.getKey()
 
             if (key == Kbd.UP):
 
-                while(True):
+                while (True):
                     self.currSelection -= 1
                     if (self.currSelection < 0):
                         self.currSelection = len(self.menuItems) - 1
@@ -199,7 +199,7 @@ class Menu:
                 self.update()
 
             if (key == Kbd.DOWN):
-                while(True):
+                while (True):
                     self.currSelection += 1
                     if (self.currSelection > (len(self.menuItems) - 1)):
                         self.currSelection = 0
@@ -219,15 +219,17 @@ class Menu:
                 self.execute()
                 keepRunning = False
 
-    def generateMenuFile(filePath,options,commands):
+    @staticmethod
+    def generateMenuFile(filePath, options, commands):
         f = open(filePath, "w")
         for i in range(len(options)):
             f.write(options[i] + "\n")
             f.write(commands[i] + "\n")
         f.close()
 
+    @staticmethod
     def generateEmptyCommand(toKeepRunning=True):
-        if(toKeepRunning):
+        if (toKeepRunning):
             command = ">stack.append(True)"
         else:
             command = ">stack.append(False)"
@@ -237,13 +239,14 @@ class Menu:
     def wait():
         print("\nPress ENTER to continue")
         continueWaiting = True
-        while(continueWaiting):
-            if(Kbd.getKey() == Kbd.ENTER):
+        while (continueWaiting):
+            if (Kbd.getKey() == Kbd.ENTER):
                 continueWaiting = False
+
 
 class Notes:
 
-    def __init__ (self, title, tags, path):
+    def __init__(self, title, tags, path):
         self.title = title
         self.tags = tags
         self.path = path
@@ -256,6 +259,7 @@ class Notes:
         Menu.wait()
         os.remove(eval("\"" + self.path + "\""))
 
+    @staticmethod
     def fix(filepath):
         file = open(filepath, "r")
         newNote = Notes("Title", [], filepath)
@@ -265,9 +269,9 @@ class Notes:
         print('\n\n')
         newNote.title = input("Give the above note a title: ")
         addTags = True
-        menu = Menu(Utilities.Path("fix_addTags","menu"))
-        while(addTags):
-            menu.run() # will push boolean for addTags, then the new tag
+        menu = Menu(Utilities.Path("fix_addTags", "menu"))
+        while (addTags):
+            menu.run()  # will push boolean for addTags, then the new tag
             newTag = stack.pop()
             addTags = stack.pop()
             if (addTags):
@@ -285,36 +289,36 @@ class Notes:
         file.write("TAGS:" + str(newNote.tags) + "\n")
         file.write("PATH:" + filepath + "\n\n")
         file.write(filetext)
-        
+
     def display(self):
         add_tag = 0
         delete_note = 1
         return_to_menu = 2
-        
+
         menu_file = Utilities.Path("display", "menu")
         display_menu = Menu(menu_file)
-        
+
         file = open(self.path, "r")
         text = file.read()
         file.close()
-        
-        display_menu.setHeader(text + "\n")        
+
+        display_menu.setHeader(text + "\n")
         display_menu.run()
         instruction = stack.pop()
-        
-        if(instruction == add_tag):
+
+        if (instruction == add_tag):
             self.add_tag()
             NotesList.populateNoteList()
-        elif(instruction == delete_note):
+        elif (instruction == delete_note):
             pass
-        elif(instruction == return_to_menu):
+        elif (instruction == return_to_menu):
             pass  # will drop back to main menu
-        
+
     def add_tag(self):
         addTags = True
-        menu = Menu(Utilities.Path("fix_addTags","menu"))
-        while(addTags):
-            menu.run() # will push boolean for addTags, then the new tag
+        menu = Menu(Utilities.Path("fix_addTags", "menu"))
+        while (addTags):
+            menu.run()  # will push boolean for addTags, then the new tag
             newTag = stack.pop()
             addTags = stack.pop()
             if (addTags):
@@ -325,7 +329,7 @@ class Notes:
         with open(self.path, "w") as f:
             for line in text:
                 f.write(line)
-        
+
 
 class Tag:
 
@@ -358,15 +362,15 @@ class NotesList:
 
     def get_note_by_path(self, path):
         check_double_slash = path.split("\\")
-        if(check_double_slash[1] != ''):
+        if (check_double_slash[1] != ''):
             path = Utilities.fixSingleSlash(path)
         chosen_note = None
         for note in self.masterNotesList:
             if (note.path == path):
                 chosen_note = note
-        if(chosen_note):
-            return(chosen_note)
-        
+        if (chosen_note):
+            return (chosen_note)
+
     def sortLists(self):
         self.masterNotesList.sort(key=Notes.getPath)
         self.workingNotesList.sort(key=Notes.getPath)
@@ -394,19 +398,19 @@ class NotesList:
             self.masterTagList[i].selected = False
 
     def fillMasterNotesList(self):
-        #Clear Master Notes List
+        # Clear Master Notes List
         self.masterNotesList = []
-        #Read Master List
+        # Read Master List
         file = open(masterNoteList, "r")
         lines = []
         for line in file:
             lines.append(line.rstrip("\n"))
         file.close()
 
-        for i in range(len(lines)//3):
-            newNote = Notes(lines[i*3],
-                            Utilities.readList(lines[i*3+1]),
-                            lines[i*3+2])
+        for i in range(len(lines) // 3):
+            newNote = Notes(lines[i * 3],
+                            Utilities.readList(lines[i * 3 + 1]),
+                            lines[i * 3 + 2])
             self.masterNotesList.append(newNote)
 
         self.fillTagList()
@@ -416,10 +420,10 @@ class NotesList:
         selectedTags = []
 
         for tag in self.masterTagList:
-            if(tag.selected):
+            if (tag.selected):
                 selectedTags.append(tag)
 
-        if(self.andTags):
+        if (self.andTags):
             self.workingNotesList = self.masterNotesList
             if (len(selectedTags) == 0):
                 self.workingNotesList = []
@@ -431,7 +435,7 @@ class NotesList:
                             tempList.append(note)
                 self.workingNotesList = tempList
 
-        elif(self.orTags):
+        elif (self.orTags):
             self.workingNotesList = []
             tempList = []
             for tag in selectedTags:
@@ -444,10 +448,10 @@ class NotesList:
                 for existingNote in self.workingNotesList:
                     if (note.title == existingNote.title):
                         notDuplicate = False
-                if(notDuplicate):
+                if (notDuplicate):
                     self.workingNotesList.append(note)
 
-        elif(self.notTags):
+        elif (self.notTags):
             self.workingNotesList = []
             tempList = []
             for tag in selectedTags:
@@ -460,40 +464,40 @@ class NotesList:
                 for existingNote in self.workingNotesList:
                     if (note.path == existingNote.path):
                         notDuplicate = False
-                if(notDuplicate):
+                if (notDuplicate):
                     self.workingNotesList.append(note)
             tempList = []
             for note in self.masterNotesList:
                 isORedNote = False
                 for ORedNote in self.workingNotesList:
-                    if(note.path == ORedNote.path):
+                    if (note.path == ORedNote.path):
                         isORedNote = True
-                if(not isORedNote):
+                if (not isORedNote):
                     tempList.append(note)
             self.workingNotesList = tempList
         self.sortLists()
 
     @staticmethod
     def populateNoteList():
-        #Clear masterNoteList .txt file
+        # Clear masterNoteList .txt file
         noteListFile = open(masterNoteList, "w")
         noteListFile.close()
         filepath = Utilities.Path("", "note", folder=True)
         notes = []
         files = os.listdir(filepath)
         for file in files:
-            if(file[-4] != '.'):
+            if (file[-4] != '.'):
                 folderfiles = os.listdir(filepath + file + "\\")
                 for folderfile in folderfiles:
                     files.append(file + "\\" + folderfile)
-            elif(file[-4:] == ".txt"):
+            elif (file[-4:] == ".txt"):
                 f = open((filepath + file), "r")
                 title = f.readline()
                 tags = f.readline()
                 path = Utilities.fixSingleSlash(filepath + file) + "\n"
                 f.close()
                 if (title[:5] != "TITLE" or tags[:4] != "TAGS"):
-                    Notes.fix(filepath+file)
+                    Notes.fix(filepath + file)
                     f = open((filepath + file), "r")
                     title = f.readline()
                     tags = f.readline()
@@ -508,7 +512,7 @@ class NotesList:
         notesList.fillMasterNotesList()
 
     def selectNoteFromList(self, useMasterList=True):
-        if(useMasterList):
+        if (useMasterList):
             notes = self.masterNotesList
             header = "\n      NOTES\n"
         else:
@@ -534,14 +538,14 @@ class NotesList:
         menu = Menu(menuPath)
         menu.setHeader(header)
 
-        while(not pathSelected):
+        while (not pathSelected):
             menu.run()
             pathSelected = stack.pop()
 
         chosenPath = stack.pop()
         chosen_note = notesList.get_note_by_path(chosenPath)
 
-        if(useMasterList):
+        if (useMasterList):
             chosen_note.display()
         else:
             stack.append(chosenPath)
@@ -572,8 +576,8 @@ class NotesList:
         commandList = []
         for i in range(len(titleList)):
             commandList.append(">self.toggleChosen(" + str(i) + ")\n"
-                               ">notesList.toggleTagSelected(" + str(i) + ")\n"
-                               ">stack.append(True)")
+                                                                ">notesList.toggleTagSelected(" + str(i) + ")\n"
+                                                                                                           ">stack.append(True)")
         titleList.append(Menu.markEndScroll())
         commandList.append(Menu.generateEmptyCommand())
         titleList.append("AND Tags")
@@ -604,7 +608,7 @@ class NotesList:
         menu.setChosen(-4)
 
         keepRunning = True
-        while(keepRunning):
+        while (keepRunning):
             notesList.populateWorkingList()
             header = ("   SELECT TAGS TO SEARCH\n\n")
             header += ("There are " + str(len(notesList.workingNotesList)) +
@@ -629,12 +633,14 @@ class NotesList:
 
 class Utilities:
 
+    @staticmethod
     def abandonShip(exitString="The Program will now close, Good Bye!"):
         print(Style.RESET_ALL)
         os.system('cls')
         print(exitString)
         sys.exit()
 
+    @staticmethod
     def displayByPath(filepath):
         file = open(filepath, "r")
         text = file.read()
@@ -642,6 +648,7 @@ class Utilities:
         print(text)
         Menu.wait()
 
+    @staticmethod
     def readList(listString):
         listString = listString.lstrip("[")
         listString = listString.rstrip("]")
@@ -650,6 +657,7 @@ class Utilities:
             splitList[i] = eval(splitList[i])
         return splitList
 
+    @staticmethod
     def Path(name, kind="main", folder=False):
         filepath = "C:\\py\\NotesKeeper\\"
         extension = ".txt"
@@ -663,6 +671,7 @@ class Utilities:
         else:
             return (filepath + name + extension)
 
+    @staticmethod
     def fixSingleSlash(pathString):
 
         newString = []
@@ -673,6 +682,7 @@ class Utilities:
         pathString = ''.join(newString)
         return pathString
 
+    @staticmethod
     def loadingDots(numDots=1, waitTime=.23):
         sys.stdout.write(". ")
         sleep(waitTime)
@@ -681,7 +691,6 @@ class Utilities:
 
 
 def initializeNotesKeeper(quickBoot, shortWait, longWait):
-
     if (quickBoot):
         global stack
         stack = []
@@ -754,7 +763,6 @@ def initializeNotesKeeper(quickBoot, shortWait, longWait):
 
 
 def main(argv):
-
     # Global Variables
     global stack
     global masterNoteList
@@ -786,8 +794,8 @@ def main(argv):
     menu = Menu(Utilities.Path("mainMenu", "menu"))
     menu.setHeader("\n        MAIN MENU\n")
 
-    while(True):
-        if(debug):
+    while (True):
+        if (debug):
             try:
                 menu.run()
             except Exception:

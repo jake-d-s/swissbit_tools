@@ -51,11 +51,12 @@ def main(argv):
             args.outfile_name = match.group(1) + '_' + str(count) + '.csv'
 
     build_csv_file(drive_list, args.outfile_name, args.verbose)
-        
+
 
 class DriveData:
     """Class used to hold drive performance data and return the data in csv format
     """
+
     def __init__(self):
         self.description = ''
         self.run_number = 0
@@ -80,25 +81,25 @@ class DriveData:
         :returns string: string representation of a DriveData object
         """
         return self.description + ',' + str(self.run_number) + ',' + str(self.cdmVersion) + ',' + \
-            str(self.seq_read) + ',' + str(self.seq_write) + ',' + \
-            str(self.seq_read_QD_32) + ',' + str(self.seq_write_QD_32) + ',' + \
-            str(self.rand_read_512) + ',' + str(self.rand_write_512) + ',' + \
-            str(self.rand_read_4k_QD_1) + ',' + str(self.rand_read_4k_QD_1_IOPS) + ',' + \
-            str(self.rand_write_4k_QD_1) + ',' + str(self.rand_write_4k_QD_1_IOPS) + ',' + \
-            str(self.rand_read_4k_QD_32) + ',' + str(self.rand_read_4k_QD_32_IOPS) + ',' + \
-            str(self.rand_write_4k_QD_32) + ',' + str(self.rand_write_4k_QD_32_IOPS) + '\n'
+               str(self.seq_read) + ',' + str(self.seq_write) + ',' + \
+               str(self.seq_read_QD_32) + ',' + str(self.seq_write_QD_32) + ',' + \
+               str(self.rand_read_512) + ',' + str(self.rand_write_512) + ',' + \
+               str(self.rand_read_4k_QD_1) + ',' + str(self.rand_read_4k_QD_1_IOPS) + ',' + \
+               str(self.rand_write_4k_QD_1) + ',' + str(self.rand_write_4k_QD_1_IOPS) + ',' + \
+               str(self.rand_read_4k_QD_32) + ',' + str(self.rand_read_4k_QD_32_IOPS) + ',' + \
+               str(self.rand_write_4k_QD_32) + ',' + str(self.rand_write_4k_QD_32_IOPS) + '\n'
 
     @staticmethod
     def print_header_labels():
         """Static method to return the header record for a drive data csv file
         :returns string: header record for the csv file
         """
-        return  'Drive,Run Number,CDM Version,Sequential Read,Sequential Write,' + \
-                'Sequential Read (QD=32),Sequential Write (QD=32),' + \
-                'Random Read 512KB,Random Write 512KB,' + \
-                'Random Read 4KB (QD=1),Random Read 4KB (QD=1) IOPS,Random Write 4KB (QD=1),' + \
-                'Random Write 4KB (QD=1) IOPS,Random Read 4KB (QD=32),Random Read 4KB (QD=32) IOPS,' + \
-                'Random Write 4KB (QD=32),Random Write 4KB (QD=32) IOPS\n'
+        return 'Drive,Run Number,CDM Version,Sequential Read,Sequential Write,' + \
+               'Sequential Read (QD=32),Sequential Write (QD=32),' + \
+               'Random Read 512KB,Random Write 512KB,' + \
+               'Random Read 4KB (QD=1),Random Read 4KB (QD=1) IOPS,Random Write 4KB (QD=1),' + \
+               'Random Write 4KB (QD=1) IOPS,Random Read 4KB (QD=32),Random Read 4KB (QD=32) IOPS,' + \
+               'Random Write 4KB (QD=32),Random Write 4KB (QD=32) IOPS\n'
 
 
 def read_file(file_name, verbose=True):
@@ -242,7 +243,7 @@ def build_drive_list(text, verbose=False):
                     # this should be the last record, so set drive_active to False and store it in the total_result list
                     total_results.append(drive)
                     drive_active = False
-            
+
     if verbose:
         print('Number of tests aggregated: <' + str(len(total_results)) + '>')
 
@@ -272,7 +273,7 @@ def build_csv_file(drive_list, outfile_name, verbose=True):
 
     with open(outfile_name, 'w+') as out_file:
         out_file.write(output_string)
-        #out_file.write("Test Case")
+        # out_file.write("Test Case")
     # confirmation dialog because Kristina wanted one
     messagebox.showinfo('File Saved', 'New drive performance data file saved to:\n' + outfile_name)
 
