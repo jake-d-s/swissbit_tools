@@ -1,62 +1,59 @@
 """When run as main, opens up the main menu of all my python projects
 """
 
-import JUtil as JU
+import JUtil as Ju
 import subprocess as sub
 import sys
-import colorama
-import datetime
 
 
 def main():
-    JU.initialize()
+    Ju.initialize()
 
     run_notes_keeper = "NotesKeeper"
     run_to_do = "To Do List"
-    parse_LPO = "Parse Long Power On Data"
-    process_LPO = "Process Long Power On Data"
-    process_CDM = "Process CDM Benchmarking Data"
-    chart_CDM = "Chart CDM Benchmarking Data"
+    parse_lpo = "Parse Long Power On Data"
+    process_lpo = "Process Long Power On Data"
+    process_cdm = "Process CDM Benchmarking Data"
+    chart_cdm = "Chart CDM Benchmarking Data"
     nvme_waf = "Process E8 WAF"
     nvme_sample = "Get MP Database info from IDFY command"
     fsync = "Chart fsync "
-    quit = "Quit"
+    quit_program = "Quit"
 
-    main_menu_titles = [run_notes_keeper, run_to_do, parse_LPO,
-                        process_LPO, process_CDM, chart_CDM, nvme_waf,
-                        nvme_sample, fsync, "", quit]
+    main_menu_titles = [run_notes_keeper, run_to_do, parse_lpo,
+                        process_lpo, process_cdm, chart_cdm, nvme_waf,
+                        nvme_sample, fsync, "", quit_program]
 
-    main_menu = JU.Menu(main_menu_titles)
+    main_menu = Ju.Menu(main_menu_titles)
 
-    while (True):
-        time = datetime.datetime.today()
-        main_menu.setHeader("Hub: " + JU.datetime_to_str_until_minute() + "\n")
-        selectedOption = main_menu.run()
+    while True:
+        main_menu.setHeader("Hub: " + Ju.datetime_to_str_until_minute() + "\n")
+        selected_option = main_menu.run()
 
-        if (selectedOption == run_notes_keeper):
+        if selected_option == run_notes_keeper:
             sub.call([sys.executable, "C:\\py\\NotesKeeper.py", "--debug", "--quick"])
-        if (selectedOption == run_to_do):
+        if selected_option == run_to_do:
             sub.call([sys.executable, "C:\\py\\ToDo.py"])
-        if (selectedOption == parse_LPO):
+        if selected_option == parse_lpo:
             sub.call([sys.executable, "C:\\py\\ParseLongPowerOn.py", "-v"])
-        if (selectedOption == process_LPO):
+        if selected_option == process_lpo:
             sub.call([sys.executable, "C:\\py\\ProcessLongPowerOn.py"])
-        if (selectedOption == process_CDM):
+        if selected_option == process_cdm:
             sub.call([sys.executable, "C:\\py\\Process_CDM.py"])
-            JU.wait()
-        if (selectedOption == chart_CDM):
+            Ju.wait()
+        if selected_option == chart_cdm:
             sub.call([sys.executable, "C:\\py\\Process_CDM.py", "-c"])
-            JU.wait()
-        if (selectedOption == nvme_waf):
+            Ju.wait()
+        if selected_option == nvme_waf:
             sub.call([sys.executable, "C:\\py\\NVMe_WAF.py"])
-            JU.wait()
-        if (selectedOption == nvme_sample):
+            Ju.wait()
+        if selected_option == nvme_sample:
             sub.call([sys.executable, "C:\\py\\Get_Sample_Info.py"])
-            JU.wait()
-        if (selectedOption == fsync):
+            Ju.wait()
+        if selected_option == fsync:
             sub.call([sys.executable, "C:\\py\\fsync_parser.py"])
-            JU.wait()
-        if (selectedOption == quit):
+            Ju.wait()
+        if selected_option == quit_program:
             break
 
 

@@ -20,14 +20,14 @@ class CDMSeries:
                             "rand_read_4k_QD_32": True, "rand_read_4k_QD_32_IOPS": False,
                             "rand_write_4k_QD_32": True, "rand_write_4k_QD_32_IOPS": False}
 
-        if (drivedata_list is None):
+        if drivedata_list is None:
             self.title = ""
             self.points = []
 
         else:
             self.title = drivedata_list[0].description
             self.points = find_averages(drivedata_list)
-            if (int(drivedata_list[0].cdm_version) == 3):
+            if int(drivedata_list[0].cdm_version) == 3:
                 self.enable_dict = {"seq_read": True, "seq_write": True,
                                     "seq_read_QD_32": False, "seq_write_QD_32": False,
                                     "rand_read_512": False, "rand_write_512": False,
@@ -47,12 +47,12 @@ class CDMSeries:
         averages_y = ()
 
         for key in self.enable_dict:
-            if (self.enable_dict[key]):
+            if self.enable_dict[key]:
                 tick += 1
                 ticks += (tick,)
                 tick_labels += (DriveData.return_chart_header_by_name(key),)
                 for drive_data in self.points:
-                    if (drive_data.run_number != "AVERAGE"):
+                    if drive_data.run_number != "AVERAGE":
                         data_x += (tick,)
                         data_y += (float(drive_data.return_variable_by_name(key)),)
                     else:
@@ -99,14 +99,15 @@ class DriveData:
         """Return the members of the DriveData class in order for csv printing
         :returns string: string representation of a DriveData object
         """
-        return str(self.description) + ',' + str(self.run_number) + ',' + str(self.cdm_version) + ',' + \
-               str(self.seq_read) + ',' + str(self.seq_write) + ',' + \
-               str(self.seq_read_QD_32) + ',' + str(self.seq_write_QD_32) + ',' + \
-               str(self.rand_read_512) + ',' + str(self.rand_write_512) + ',' + \
-               str(self.rand_read_4k_QD_1) + ',' + str(self.rand_read_4k_QD_1_IOPS) + ',' + \
-               str(self.rand_write_4k_QD_1) + ',' + str(self.rand_write_4k_QD_1_IOPS) + ',' + \
-               str(self.rand_read_4k_QD_32) + ',' + str(self.rand_read_4k_QD_32_IOPS) + ',' + \
-               str(self.rand_write_4k_QD_32) + ',' + str(self.rand_write_4k_QD_32_IOPS) + '\n'
+        self_string = str(self.description) + ',' + str(self.run_number) + ',' + str(self.cdm_version) + ',' + \
+            str(self.seq_read) + ',' + str(self.seq_write) + ',' + \
+            str(self.seq_read_QD_32) + ',' + str(self.seq_write_QD_32) + ',' + \
+            str(self.rand_read_512) + ',' + str(self.rand_write_512) + ',' + \
+            str(self.rand_read_4k_QD_1) + ',' + str(self.rand_read_4k_QD_1_IOPS) + ',' + \
+            str(self.rand_write_4k_QD_1) + ',' + str(self.rand_write_4k_QD_1_IOPS) + ',' + \
+            str(self.rand_read_4k_QD_32) + ',' + str(self.rand_read_4k_QD_32_IOPS) + ',' + \
+            str(self.rand_write_4k_QD_32) + ',' + str(self.rand_write_4k_QD_32_IOPS) + '\n'
+        return self_string
 
     @staticmethod
     def print_header_labels():
@@ -122,34 +123,33 @@ class DriveData:
 
     @staticmethod
     def return_chart_header_by_name(name):
-        chart_header = ""
-        if (name == "seq_read"):
+        if name == "seq_read":
             chart_header = "Seq Read"
-        elif (name == "seq_write"):
+        elif name == "seq_write":
             chart_header = "Seq Write"
-        elif (name == "seq_read_QD_32"):
+        elif name == "seq_read_QD_32":
             chart_header = "Seq Read\n\nQD = 32"
-        elif (name == "seq_write_QD_32"):
+        elif name == "seq_write_QD_32":
             chart_header = "Seq Write\n\nQD = 32"
-        elif (name == "rand_read_512"):
+        elif name == "rand_read_512":
             chart_header = "Rand Read\n512KB"
-        elif (name == "rand_write_512"):
+        elif name == "rand_write_512":
             chart_header = "Rand Write\n512KB"
-        elif (name == "rand_read_4k_QD_1"):
+        elif name == "rand_read_4k_QD_1":
             chart_header = "Rand Read\n4KB\nQD = 1"
-        elif (name == "rand_read_4k_QD_1_IOPS"):
+        elif name == "rand_read_4k_QD_1_IOPS":
             chart_header = "Rand Read\n4KB\nQD = 1\nIOPS"
-        elif (name == "rand_write_4k_QD_1"):
+        elif name == "rand_write_4k_QD_1":
             chart_header = "Rand Write\n4KB\nQD = 1"
-        elif (name == "rand_write_4k_QD_1_IOPS"):
+        elif name == "rand_write_4k_QD_1_IOPS":
             chart_header = "Rand Write\n4KB\nQD = 1\nIOPS"
-        elif (name == "rand_read_4k_QD_32"):
+        elif name == "rand_read_4k_QD_32":
             chart_header = "Rand Read\n4KB\nQD = 32"
-        elif (name == "rand_read_4k_QD_32_IOPS"):
+        elif name == "rand_read_4k_QD_32_IOPS":
             chart_header = "Rand Read\n4KB\nQD = 32\nIOPS"
-        elif (name == "rand_write_4k_QD_32"):
+        elif name == "rand_write_4k_QD_32":
             chart_header = "Rand Write\n4KB\nQD = 32"
-        elif (name == "rand_read_4k_QD_32_IOPS"):
+        elif name == "rand_read_4k_QD_32_IOPS":
             chart_header = "Rand Write\n4KB\nQD = 32\nIOPS"
         else:
             chart_header = "INVALID NAME"
@@ -157,7 +157,6 @@ class DriveData:
 
     # noinspection PyMethodMayBeStatic
     def return_variable_by_name(self, name):
-        variable_by_name = 0
         command = "self." + name
         variable_by_name = eval(command)
         return variable_by_name
@@ -172,7 +171,6 @@ def read_file(file_name, verbose=True):
     if verbose:
         print('Reading file: <' + file_name + '>')
 
-    lines = None
     with open(file_name, 'r+') as infile:
         lines = infile.readlines()
 
@@ -207,10 +205,10 @@ def build_drive_list(text, verbose=False):
             if data:
                 drive.cdm_version = data.group(1).strip()
                 continue
-        if (drive.cdm_version == 0):
+        if drive.cdm_version == 0:
             # Do nothing
             continue
-        elif (str(drive.cdm_version) == "3"):
+        elif str(drive.cdm_version) == "3":
             if 'Sequential Read :' in line and drive_active:
                 data = re.search('Sequential Read : (.*) MB/s', line)
                 if data:
@@ -257,7 +255,7 @@ def build_drive_list(text, verbose=False):
                     # this should be the last record, so set drive_active to False and store it in the total_result list
                 total_results.append(drive)
                 drive_active = False
-        elif (str(drive.cdm_version) == "5"):
+        elif str(drive.cdm_version) == "5":
             if 'Sequential Read (Q= 32,T=' in line and drive_active:
                 data = re.search('Sequential Read \(Q= 32,T= [0-9]*\) : (.*) MB/s', line)
                 if data:
@@ -332,7 +330,7 @@ def find_averages(drive_list):
     rand_write_4k_QD_32_IOPS = 0
 
     for drive in drive_list:
-        if (drive.description == current_desc):
+        if drive.description == current_desc:
             cdm_version += int(drive.cdm_version)
             seq_read += float(drive.seq_read)
             seq_write += float(drive.seq_write)
@@ -456,7 +454,7 @@ def display_data(drive_list):
     same_description_list = []
     current_description = sorted_drive_list[0].description
     for drive in sorted_drive_list:
-        if (drive.description == current_description):
+        if drive.description == current_description:
             same_description_list.append(drive)
         else:
             cdm = CDMSeries(same_description_list)
@@ -510,7 +508,7 @@ def main(argv):
             if args.verbose:
                 print('File name already taken: <' + args.outfile_name + '>')
             args.outfile_name = match.group(1) + '_' + str(count) + '.csv'
-    if (not args.just_chart):
+    if not args.just_chart:
         build_csv_file(drive_list, args.outfile_name)
     display_data(drive_list)
 
