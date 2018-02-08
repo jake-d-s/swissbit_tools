@@ -23,7 +23,7 @@ def get_host_writes(filename):
     total = high + low
     total = int(total, 16) * 1000 * 512
     text += "Host Writes    (Bytes): " + str(total) + "\n"
-    return (total, text)
+    return total, text
     
     
 def get_flash_writes(filename):
@@ -33,7 +33,7 @@ def get_flash_writes(filename):
     text += total + "\n"
     total = int(total, 16) * 512
     text += "Flash Writes   (Bytes): " + str(total) + "\n"
-    return (total, text)
+    return total, text
 
 
 def get_total_erase_count(filename):
@@ -43,7 +43,7 @@ def get_total_erase_count(filename):
     text += total + "\n"
     total = int(total, 16)
     text += "Erase Count   (blocks): " + str(total) + "\n"
-    return (total, text)
+    return total, text
 
 
 def get_erase_block_size(capacity):
@@ -52,11 +52,11 @@ def get_erase_block_size(capacity):
     size = 0
     
     # 16MB * number of CE * number of planes * MAGIC
-    if (capacity > 512):  # 1TB
+    if capacity > 512:  # 1TB
         size = mb_12 * 32 * 2
-    elif (capacity > 256):  # 512GB
+    elif capacity > 256:  # 512GB
         size = mb_12 * 16 * 2
-    elif (capacity > 128):  # 256GB
+    elif capacity > 128:  # 256GB
         size = mb_12 * 8 * 2
     else:  # 128GB
         size = mb_12 * 4 * 2 
@@ -213,5 +213,5 @@ def test_erase_counts():
     print("Flash Writes / Erase Count = " + str(block_size))
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     main()

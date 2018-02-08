@@ -3,6 +3,7 @@ import os
 from colorama import Fore, Back, Style
 
 
+
 class ToDo:
     unstarted = 0
     in_progress = 1
@@ -112,7 +113,7 @@ class ToDoMenu(Ju.Menu):
         return self.option(self.currSelection)
 
     def update(self):
-        self.scrollWindow()
+        self.scroll_window()
         curr_sel = self.currSelection
         print(self.unselected)
         os.system('cls')
@@ -310,7 +311,7 @@ def main():
 
     main_menu_titles = [regression_testing, misc_tasks, quit_program]
     main_menu = Ju.Menu(main_menu_titles)
-    main_menu.setHeader("\n   TO DO   \n")
+    main_menu.set_header("\n   TO DO   \n")
 
     reg_menu_handler = MenuHandler(save_file_path, ToDo.regression)
     misc_menu_handler = MiscMenuHandler(save_file_path, ToDo.misc)

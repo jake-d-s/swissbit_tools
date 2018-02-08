@@ -27,7 +27,7 @@ def main():
     main_menu = Ju.Menu(main_menu_titles)
 
     while True:
-        main_menu.setHeader("Hub: " + Ju.datetime_to_str_until_minute() + "\n")
+        main_menu.set_header("Hub: " + Ju.datetime_to_str_until_minute() + "\n")
         selected_option = main_menu.run()
 
         if selected_option == run_notes_keeper:

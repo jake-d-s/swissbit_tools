@@ -80,14 +80,15 @@ class DriveData:
         """Return the members of the DriveData class in order for csv printing
         :returns string: string representation of a DriveData object
         """
-        return self.description + ',' + str(self.run_number) + ',' + str(self.cdmVersion) + ',' + \
-               str(self.seq_read) + ',' + str(self.seq_write) + ',' + \
-               str(self.seq_read_QD_32) + ',' + str(self.seq_write_QD_32) + ',' + \
-               str(self.rand_read_512) + ',' + str(self.rand_write_512) + ',' + \
-               str(self.rand_read_4k_QD_1) + ',' + str(self.rand_read_4k_QD_1_IOPS) + ',' + \
-               str(self.rand_write_4k_QD_1) + ',' + str(self.rand_write_4k_QD_1_IOPS) + ',' + \
-               str(self.rand_read_4k_QD_32) + ',' + str(self.rand_read_4k_QD_32_IOPS) + ',' + \
-               str(self.rand_write_4k_QD_32) + ',' + str(self.rand_write_4k_QD_32_IOPS) + '\n'
+        self_string = self.description + ',' + str(self.run_number) + ',' + str(self.cdmVersion) + ',' + \
+                      str(self.seq_read) + ',' + str(self.seq_write) + ',' + \
+                      str(self.seq_read_QD_32) + ',' + str(self.seq_write_QD_32) + ',' + \
+                      str(self.rand_read_512) + ',' + str(self.rand_write_512) + ',' + \
+                      str(self.rand_read_4k_QD_1) + ',' + str(self.rand_read_4k_QD_1_IOPS) + ',' + \
+                      str(self.rand_write_4k_QD_1) + ',' + str(self.rand_write_4k_QD_1_IOPS) + ',' + \
+                      str(self.rand_read_4k_QD_32) + ',' + str(self.rand_read_4k_QD_32_IOPS) + ',' + \
+                      str(self.rand_write_4k_QD_32) + ',' + str(self.rand_write_4k_QD_32_IOPS) + '\n'
+        return self_string
 
     @staticmethod
     def print_header_labels():
@@ -146,10 +147,10 @@ def build_drive_list(text, verbose=False):
             if data:
                 drive.cdmVersion = data.group(1).strip()
                 continue
-        if (drive.cdmVersion == 0):
+        if drive.cdmVersion == 0:
             # Do nothing
             continue
-        elif (str(drive.cdmVersion) == "3"):
+        elif str(drive.cdmVersion) == "3":
             if 'Sequential Read :' in line and drive_active:
                 data = re.search('Sequential Read : (.*) MB/s', line)
                 if data:
@@ -196,7 +197,7 @@ def build_drive_list(text, verbose=False):
                     # this should be the last record, so set drive_active to False and store it in the total_result list
                 total_results.append(drive)
                 drive_active = False
-        elif (str(drive.cdmVersion) == "5"):
+        elif str(drive.cdmVersion) == "5":
             if 'Sequential Read (Q= 32,T=' in line and drive_active:
                 data = re.search('Sequential Read \(Q= 32,T= [0-9]*\) : (.*) MB/s', line)
                 if data:

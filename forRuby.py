@@ -1,7 +1,7 @@
 import winsound
 
 
-class Letter():
+class Letter:
     soundpath = "C:\\LearnArabic331\\alphabet\\Sound\\Bracket0\\"
 
     def __init__(self, file_name, file_extension=".wav"):
@@ -12,7 +12,7 @@ class Letter():
         winsound.PlaySound(self.file_path, winsound.SND_FILENAME)
 
 
-def ListenArabic():
+def listen_arabic():
     alif = Letter("alif")
     ba = Letter("ba")
 
@@ -39,4 +39,4 @@ def ListenArabic():
     # gm.run()
 
 
-ListenArabic()
+listen_arabic()

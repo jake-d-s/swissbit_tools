@@ -1,12 +1,8 @@
 import leather
-import random
-from tkinter import filedialog, messagebox
+from tkinter import filedialog
 import tkinter.ttk
-import argparse
-import os
 import re
-import sys
-import JUtil as JU
+import JUtil as Ju
 import pathlib
 
 
@@ -29,22 +25,22 @@ class LPOSeries:
     def add_sft_cycle(self, new_cycle):
         duplicate_cycle = False
         for cycle in self.sft_cycles:
-            if (cycle.power_cycle == new_cycle.power_cycle):
+            if cycle.power_cycle == new_cycle.power_cycle:
                 duplicate_cycle = True
-            if (cycle.power_cycle > new_cycle.power_cycle):
+            if cycle.power_cycle > new_cycle.power_cycle:
                 break
-        if (not duplicate_cycle):
+        if not duplicate_cycle:
             self.sft_cycles.append(new_cycle)
             self.sft_cycles.sort(key=lambda cyc: cyc.power_cycle)
 
     def add_ezt_cycle(self, new_cycle):
         duplicate_cycle = False
         for cycle in self.ezt_cycles:
-            if (cycle.power_cycle == new_cycle.power_cycle):
+            if cycle.power_cycle == new_cycle.power_cycle:
                 duplicate_cycle = True
-            if (cycle.power_cycle > new_cycle.power_cycle):
+            if cycle.power_cycle > new_cycle.power_cycle:
                 break
-        if (not duplicate_cycle):
+        if not duplicate_cycle:
             self.ezt_cycles.append(new_cycle)
             self.ezt_cycles.sort(key=lambda cyc: cyc.power_cycle)
 
@@ -56,70 +52,70 @@ class LPOSeries:
                ezt_index < len(self.ezt_cycles)):
             sft = self.sft_cycles[sft_index]
             ezt = self.ezt_cycles[ezt_index]
-            if (sft.power_cycle == ezt.power_cycle):
-                new_power_cycle = Power_cycle(sft.power_cycle,
-                                              ezt.ezt_cycle,
-                                              sft.sft_cycle,
-                                              ezt.detect_time_s,
-                                              sft.detect_time_s)
+            if sft.power_cycle == ezt.power_cycle:
+                new_power_cycle = PowerCycle(sft.power_cycle,
+                                             ezt.ezt_cycle,
+                                             sft.sft_cycle,
+                                             ezt.detect_time_s,
+                                             sft.detect_time_s)
                 self.cycles.append(new_power_cycle)
-                if (new_power_cycle.max_time() > self.max_time_s):
+                if new_power_cycle.max_time() > self.max_time_s:
                     self.failed_cycles.append(new_power_cycle)
                 sft_index += 1
                 ezt_index += 1
-            elif (sft.power_cycle > ezt.power_cycle):
-                new_power_cycle = Power_cycle(ezt.power_cycle,
-                                              ezt.ezt_cycle,
-                                              0,
-                                              ezt.detect_time_s,
-                                              0)
+            elif sft.power_cycle > ezt.power_cycle:
+                new_power_cycle = PowerCycle(ezt.power_cycle,
+                                             ezt.ezt_cycle,
+                                             0,
+                                             ezt.detect_time_s,
+                                             0)
                 self.cycles.append(new_power_cycle)
-                if (new_power_cycle.max_time() > self.max_time_s):
+                if new_power_cycle.max_time() > self.max_time_s:
                     self.failed_cycles.append(new_power_cycle)
                 ezt_index += 1
-            elif (sft.power_cycle < ezt.power_cycle):
-                new_power_cycle = Power_cycle(sft.power_cycle,
-                                              0,
-                                              sft.sft_cycle,
-                                              0,
-                                              sft.detect_time_s)
+            elif sft.power_cycle < ezt.power_cycle:
+                new_power_cycle = PowerCycle(sft.power_cycle,
+                                             0,
+                                             sft.sft_cycle,
+                                             0,
+                                             sft.detect_time_s)
                 self.cycles.append(new_power_cycle)
-                if (new_power_cycle.max_time() > self.max_time_s):
+                if new_power_cycle.max_time() > self.max_time_s:
                     self.failed_cycles.append(new_power_cycle)
                 sft_index += 1
         if (sft_index >= len(self.sft_cycles) and
                 ezt_index < len(self.ezt_cycles)):
-            while (ezt_index < len(self.ezt_cycles)):
+            while ezt_index < len(self.ezt_cycles):
                 ezt = self.ezt_cycles[ezt_index]
-                new_power_cycle = Power_cycle(ezt.power_cycle,
-                                              ezt.ezt_cycle,
-                                              0,
-                                              ezt.detect_time_s,
-                                              0)
+                new_power_cycle = PowerCycle(ezt.power_cycle,
+                                             ezt.ezt_cycle,
+                                             0,
+                                             ezt.detect_time_s,
+                                             0)
                 self.cycles.append(new_power_cycle)
-                if (new_power_cycle.max_time() > self.max_time_s):
+                if new_power_cycle.max_time() > self.max_time_s:
                     self.failed_cycles.append(new_power_cycle)
                 ezt_index += 1
         elif (sft_index < len(self.sft_cycles) and
               ezt_index >= len(self.ezt_cycles)):
-            while (sft_index < len(self.sft_cycles)):
+            while sft_index < len(self.sft_cycles):
                 sft = self.sft_cycles[sft_index]
-                new_power_cycle = Power_cycle(sft.power_cycle,
-                                              0,
-                                              sft.sft_cycle,
-                                              0,
-                                              sft.detect_time_s)
+                new_power_cycle = PowerCycle(sft.power_cycle,
+                                             0,
+                                             sft.sft_cycle,
+                                             0,
+                                             sft.detect_time_s)
                 self.cycles.append(new_power_cycle)
-                if (new_power_cycle.max_time() > self.max_time_s):
+                if new_power_cycle.max_time() > self.max_time_s:
                     self.failed_cycles.append(new_power_cycle)
                 sft_index += 1
 
         last_cycle = self.cycles[0]
         for cycle in self.cycles:
-            if (cycle.sft_cycle < last_cycle.sft_cycle):
-                if (not last_cycle.max_time() > self.max_time_s):
+            if cycle.sft_cycle < last_cycle.sft_cycle:
+                if not last_cycle.max_time() > self.max_time_s:
                     self.failed_cycles.append(last_cycle)
-                if (not cycle.max_time() > self.max_time_s):
+                if not cycle.max_time() > self.max_time_s:
                     self.failed_cycles.append(cycle)
             last_cycle = cycle
         self.failed_cycles.sort(key=lambda cycle: cycle.power_cycle)
@@ -137,29 +133,29 @@ class LPOSeries:
         return point_list
 
     def find_max_cycle(self):
-        if (len(self.cycles) > 0):
+        if len(self.cycles) > 0:
             self.max_cycle = self.cycles[0]
             for cycle in self.cycles:
-                if (cycle.max_time() > self.max_cycle.max_time()):
+                if cycle.max_time() > self.max_cycle.max_time():
                     self.max_cycle = cycle
 
         return self.max_cycle
 
 
-class SFT_cycle:
+class SFTCycle:
 
     def __init__(self, starting_cycle, current_cycle, detect_time_ms):
-        self.power_cycle = JU.little_endian_str_to_int(starting_cycle) + int(current_cycle, 10)
+        self.power_cycle = Ju.little_endian_str_to_int(starting_cycle) + int(current_cycle, 10)
         self.sft_cycle = int(current_cycle, 10)
         self.detect_time_s = int(detect_time_ms, 10) / 1000
 
     def get_coords(self, offset, scale):
         x = offset + (self.power_cycle / scale)
         y = self.detect_time_s
-        return (x, y)
+        return x, y
 
 
-class EZT_cycle:
+class EZTCycle:
 
     def __init__(self, log_num, power_cycle_num_hex, det_time_ms_hex):
         self.power_cycle = int(power_cycle_num_hex, 16)
@@ -169,10 +165,10 @@ class EZT_cycle:
     def get_coords(self, offset, scale):
         x = offset + (self.power_cycle / scale)
         y = self.detect_time_s
-        return (x, y)
+        return x, y
 
 
-class Power_cycle():
+class PowerCycle:
 
     def __init__(self,
                  power_cycle,
@@ -199,7 +195,7 @@ class Power_cycle():
         return header
 
     def max_time(self):
-        if (self.ezt_det_time > self.sft_det_time):
+        if self.ezt_det_time > self.sft_det_time:
             time = self.ezt_det_time
         else:
             time = self.sft_det_time
@@ -256,20 +252,20 @@ def build_ezt_list(text, verbose=False):
         if 'FlashLog:' in line:
             data = re.search('^FlashLog:([0-9]+?)$', line)
             if data:
-                logNum = data.group(1).strip()
+                log_num = data.group(1).strip()
                 continue
 
         elif 'FwBootTime' in line:
             data = re.search('^FwBootTime.*?0x([0-9A-Z]+?) $', line)
             if data:
-                FWBootTime = data.group(1).strip()
+                fw_boot_time = data.group(1).strip()
                 continue
 
         elif 'PowerCycle Count' in line:
             data = re.search('^PowerCycle Count.*?0x([0-9A-Z]+?) $', line)
             if data:
-                pwrCycleCount = data.group(1).strip()
-                new_cycle = EZT_cycle(logNum, pwrCycleCount, FWBootTime)
+                pwr_cycle_count = data.group(1).strip()
+                new_cycle = EZTCycle(log_num, pwr_cycle_count, fw_boot_time)
                 total_results.append(new_cycle)
 
     if verbose:
@@ -296,14 +292,14 @@ def build_sft_list(text, verbose=False):
                 continue
         elif 'starting, access ' in line:
             data = re.search('^.*?Cycle ([0-9]+?) starting, access.*?$', line)
-            if (data and starting_cycle):
+            if data and starting_cycle:
                 cycle_num = data.group(1).strip()
                 continue
         elif 'Device was detected after' in line:
             data = re.search('^.*?Device was detected after ([0-9]+?)ms.*?$', line)
-            if (data and starting_cycle and cycle_num):
+            if data and starting_cycle and cycle_num:
                 det_time = data.group(1).strip()
-                new_cycle = SFT_cycle(starting_cycle, cycle_num, det_time)
+                new_cycle = SFTCycle(starting_cycle, cycle_num, det_time)
                 total_results.append(new_cycle)
 
     if verbose:
@@ -321,7 +317,7 @@ def main():
 
     num_drives = input("How many drives would you like to process?\n>>> ")
     int_received = False
-    while (not int_received):
+    while not int_received:
         try:
             num_drives = int(num_drives)
             int_received = True
@@ -329,7 +325,7 @@ def main():
             print("ERROR: You must enter an integer")
             num_drives = input("How many drives would you like to process?\n>>> ")
 
-    if (num_drives <= 0):
+    if num_drives <= 0:
         print("Too Few Drives")
         exit(0)
 
@@ -343,12 +339,12 @@ def main():
         lpo.title = drive_name
 
         root.filename = filedialog.askopenfilenames(
-            initialdir=("C:\\Users\\Jake\\Desktop\\Projects\\Regression Testing"),
+            initialdir="C:\\Users\\Jake\\Desktop\\Projects\\Regression Testing",
             title=("Choose files for " + drive_name), filetypes=(('all files', '*.*'),))
         # if we don't get a filename just bail
         if root.filename:
             infile_names = root.filename
-            if (out_dir == ""):
+            if out_dir == "":
                 match = re.search('(.*)\.', infile_names[0])
                 dirs = match.group(1).split("/")
                 dirs.pop()
@@ -361,7 +357,7 @@ def main():
         sft_present = False
         for infile in infile_names:
 
-            if (infile[-4:] == ".txt"):
+            if infile[-4:] == ".txt":
                 eztool_present = True
                 text = read_file(infile, verbose)
                 ezt_list = build_ezt_list(text, verbose)
@@ -369,7 +365,7 @@ def main():
                 for ezt in ezt_list:
                     lpo.add_ezt_cycle(ezt)
 
-            elif (infile[-4:] == "html"):
+            elif infile[-4:] == "html":
                 sft_present = True
                 text = read_file(infile, verbose)
                 sft_list = build_sft_list(text, verbose)
@@ -377,17 +373,17 @@ def main():
                 for sft in sft_list:
                     lpo.add_sft_cycle(sft)
 
-        if (not eztool_present):
-            ezt = EZT_cycle("1", "1", "1")
+        if not eztool_present:
+            ezt = EZTCycle("1", "1", "1")
             lpo.add_ezt_cycle(ezt)
 
-        if (not sft_present):
-            sft = SFT_cycle("1", "1", "1")
+        if not sft_present:
+            sft = SFTCycle("1", "1", "1")
 
         message_string = (str(txt_files_parsed) + " EZTool files and " +
                           str(html_files_parsed) + " SFT files were parsed for " +
                           drive_name + "\n")
-        if (verbose):
+        if verbose:
             print(message_string)
         lpo_drive_list.append(lpo)
 
@@ -400,11 +396,11 @@ def main():
         failing_cycle_file = out_dir + "\\" + lpo.title + "_ImportantCycles.txt"
         chart_file = out_dir + "\\" + lpo.title + "_Chart.svg"
         with open(power_cycle_file, "w") as f:
-            f.write(Power_cycle.get_display_header())
+            f.write(PowerCycle.get_display_header())
             for cycle in lpo.cycles:
                 f.write(cycle.get_display_line())
         with open(failing_cycle_file, "w") as f:
-            f.write(Power_cycle.get_display_header())
+            f.write(PowerCycle.get_display_header())
             for cycle in lpo.failed_cycles:
                 f.write(cycle.get_display_line())
         sft_data = lpo.get_sft_points()
@@ -418,7 +414,7 @@ def main():
         chart.set_y_axis(y_axis)
         chart.to_svg(chart_file, 500, 400)
         chart_list.append(chart)
-    if (len(chart_list) > 1):
+    if len(chart_list) > 1:
         grid_file = out_dir + "\\"
         for lpo in lpo_drive_list:
             grid_file += lpo.title + "_"
@@ -434,11 +430,11 @@ def main():
         max_text += lpo.title + ": " + str(round(lpo.max_cycle.max_time(), 2)) + "\n"
     with open(max_file, "w") as f:
         f.write(max_text)
-    if (num_drives != 0):
+    if num_drives != 0:
         print("Processed Data stored in the directory:\n\n" + out_dir)
     else:
         print("You chose to process 0 drives, program exiting")
-    JU.wait()
+    Ju.wait()
 
 
 if __name__ == "__main__":

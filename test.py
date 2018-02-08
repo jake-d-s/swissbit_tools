@@ -17,7 +17,7 @@ def modifier(stat):
     return stat // 2 - 5
 
 
-class Character():
+class Character:
 
     def __init__(self):
         self.stats = {"STR": 11, "DEX": 20, "CON": 15, "INT": 9, "WIS": 18, "CHA": 11}
@@ -53,7 +53,7 @@ class Character():
         return total
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     monk = Character()
     for skill in monk.skills:
         monk.roll_skill(skill)

@@ -2,7 +2,8 @@ import sys
 import os
 import msvcrt
 import colorama
-from colorama import Fore, Back, Style
+from colorama import Fore,  Style
+from time import sleep
 import datetime
 import re
 
@@ -17,30 +18,30 @@ class Kbd:
     SPEC_ORD = 224
 
     @staticmethod
-    def getArrow():
-        while (not msvcrt.kbhit()):
+    def get_arrow():
+        while not msvcrt.kbhit():
             pass  # Wait
 
         char = msvcrt.getch()
         ord_char = ord(char)
 
-        if (ord_char == Kbd.ESC):
-            abandonShip()
-        elif (ord_char == Kbd.SPEC_ORD):
+        if ord_char == Kbd.ESC:
+            abandon_ship()
+        elif ord_char == Kbd.SPEC_ORD:
             dr = ord(msvcrt.getch())
 
-            if (dr == Kbd.UP[1]):
+            if dr == Kbd.UP[1]:
                 return Kbd.UP
-            elif (dr == Kbd.DOWN[1]):
+            elif dr == Kbd.DOWN[1]:
                 return Kbd.DOWN
-            elif (dr == Kbd.LEFT[1]):
+            elif dr == Kbd.LEFT[1]:
                 return Kbd.LEFT
-            elif (dr == Kbd.RIGHT[1]):
+            elif dr == Kbd.RIGHT[1]:
                 return Kbd.RIGHT
             else:
-                return Kbd.getArrow()
+                return Kbd.get_arrow()
         else:
-            return Kbd.getArrow()
+            return Kbd.get_arrow()
 
     @staticmethod
     def get_key():
@@ -52,7 +53,7 @@ class Kbd:
         ord_char = ord(char)
 
         if ord_char == Kbd.ESC:
-            abandonShip()
+            abandon_ship()
         elif ord_char == Kbd.SPEC_ORD:
             dr = ord(msvcrt.getch())
 
@@ -97,39 +98,39 @@ class Menu:
         counter = 0
 
         for title in titles_list:
-            if (title[0:3] == "***"):
+            if title[0:3] == "***":
                 self.endScroll = counter
             else:
                 self.menuItems.append([title, False])  # [Display Name, Chosen]
                 counter += 1
 
-    def scrollWindow(self):
-        if (self.currSelection < self.scrollWindowTop):
+    def scroll_window(self):
+        if self.currSelection < self.scrollWindowTop:
             self.scrollWindowTop = self.currSelection
             self.scrollWindowBottom = self.scrollWindowSize
-        elif (self.currSelection >= self.endScroll):
+        elif self.currSelection >= self.endScroll:
             self.scrollWindowBottom = self.endScroll
             self.scrollWindowTop = self.endScroll - self.scrollWindowSize - 1
-        elif (self.currSelection > self.scrollWindowBottom):
+        elif self.currSelection > self.scrollWindowBottom:
             self.scrollWindowBottom = self.currSelection
             self.scrollWindowTop = self.endScroll - self.scrollWindowSize - 1
 
     @staticmethod
-    def markEndScroll():
+    def mark_end_scroll():
         return "***\n"
 
-    def clrCurrSel(self):
+    def clear_current_selection(self):
         self.currSelection = 0
 
     def str(self):
         return str(self.menuItems)
 
-    def setHeader(self, string):
+    def set_header(self, string):
         self.header = string
 
     def update(self):
-        self.scrollWindow()
-        currSel = self.currSelection
+        self.scroll_window()
+        curr_sel = self.currSelection
         print(self.unselected)
         os.system('cls')
         print(self.header)
@@ -139,13 +140,13 @@ class Menu:
                     (self.scrollWindowBottom < index < self.endScroll)):
                 pass
 
-            elif (index == currSel):
-                if (self.isChosen(index)):
+            elif index == curr_sel:
+                if self.is_chosen(index):
                     print(self.chosenAndSelected + self.option(index))
                 else:
                     print(self.selected + self.option(index))
 
-            elif (self.isChosen(index)):  # Chosen
+            elif self.is_chosen(index):  # Chosen
                 print(self.chosen + self.option(index))
 
             else:
@@ -155,75 +156,75 @@ class Menu:
         print(self.unselected)
         os.system('cls')
 
-    def isChosen(self, index):
+    def is_chosen(self, index):
         return self.menuItems[index][1]
 
     def option(self, index):
         return self.menuItems[index][0]
 
-    def toggleChosen(self, index):
-        if (self.menuItems[index][1]):
+    def toggle_chosen(self, index):
+        if self.menuItems[index][1]:
             self.menuItems[index][1] = False
         else:
             self.menuItems[index][1] = True
 
-    def setChosen(self, index):
+    def set_chosen(self, index):
         self.menuItems[index][1] = True
 
-    def clrChosen(self, index):
+    def clr_chosen(self, index):
         self.menuItems[index][1] = False
 
     def run(self):
         self.update()
-        keepRunning = True
-        while (keepRunning):
+        keep_running = True
+        while keep_running:
             key = Kbd.get_key()
 
-            if (key == Kbd.UP):
+            if key == Kbd.UP:
 
-                while (True):
+                while True:
                     self.currSelection -= 1
-                    if (self.currSelection < 0):
+                    if self.currSelection < 0:
                         self.currSelection = len(self.menuItems) - 1
-                    if (self.menuItems[self.currSelection][0] != ""):
+                    if self.menuItems[self.currSelection][0] != "":
                         break
                 self.update()
 
-            if (key == Kbd.DOWN):
-                while (True):
+            if key == Kbd.DOWN:
+                while True:
                     self.currSelection += 1
-                    if (self.currSelection > (len(self.menuItems) - 1)):
+                    if self.currSelection > (len(self.menuItems) - 1):
                         self.currSelection = 0
-                    if (self.menuItems[self.currSelection][0] != ""):
+                    if self.menuItems[self.currSelection][0] != "":
                         break
                 self.update()
 
-            if (key == Kbd.RIGHT):
+            if key == Kbd.RIGHT:
                 self.currSelection = len(self.menuItems) - 1
                 self.update()
 
-            if (key == Kbd.LEFT):
+            if key == Kbd.LEFT:
                 self.currSelection = 0
                 self.update()
 
-            if (key == Kbd.ENTER):
-                keepRunning = False
+            if key == Kbd.ENTER:
+                keep_running = False
 
         self.execute()
 
         return self.menuItems[self.currSelection][0]
 
     @staticmethod
-    def generateMenuFile(filePath, options, commands):
-        f = open(filePath, "w")
+    def generate_menu_file(file_path, options, commands):
+        f = open(file_path, "w")
         for i in range(len(options)):
             f.write(options[i] + "\n")
             f.write(commands[i] + "\n")
         f.close()
 
     @staticmethod
-    def generateEmptyCommand(toKeepRunning=True):
-        if (toKeepRunning):
+    def generate_empty_command(to_keep_running=True):
+        if to_keep_running:
             command = ">stack.append(True)"
         else:
             command = ">stack.append(False)"
@@ -232,10 +233,10 @@ class Menu:
 
 def little_endian_str_to_int(string):
     new_str = ""
-    if (len(string) % 2 == 1):
+    if len(string) % 2 == 1:
         string += "0"
     index = len(string) - 1
-    while (index > 0):
+    while index > 0:
         new_str += string[index - 1] + string[index]
         index -= 2
     new_int = int(new_str, 16)
@@ -250,14 +251,14 @@ def datetime_to_str_until_minute():
     return time_str
 
 
-def abandonShip(exitString="The Program will now close, Good Bye!"):
+def abandon_ship(exit_string="The Program will now close, Good Bye!"):
     print(Style.RESET_ALL)
     os.system('cls')
-    print(exitString)
+    print(exit_string)
     sys.exit()
 
 
-def displayByPath(filepath):
+def display_by_path(filepath):
     file = open(filepath, "r")
     text = file.read()
     file.close()
@@ -265,52 +266,52 @@ def displayByPath(filepath):
     Menu.wait()
 
 
-def readList(listString):
-    listString = listString.lstrip("[")
-    listString = listString.rstrip("]")
-    splitList = listString.split(",")
-    for i in range(len(splitList)):
-        splitList[i] = eval(splitList[i])
-    return splitList
+def read_list(list_string):
+    list_string = list_string.lstrip("[")
+    list_string = list_string.rstrip("]")
+    split_list = list_string.split(",")
+    for i in range(len(split_list)):
+        split_list[i] = eval(split_list[i])
+    return split_list
 
 
-def Path(name, kind="main", folder=False):
+def path(name, kind="main", folder=False):
     filepath = "C:\\py\\NotesKeeper\\"
     extension = ".txt"
-    if (kind == "note"):
+    if kind == "note":
         filepath += "Notes\\"
-    if (kind == "menu"):
+    if kind == "menu":
         filepath += "Menus\\"
 
-    if (folder):
+    if folder:
         return filepath
     else:
-        return (filepath + name + extension)
+        return filepath + name + extension
 
 
-def fixSingleSlash(pathString):
-    newString = []
-    for char in pathString:
-        newString.append(char)
-        if (char == '\\'):
-            newString.append(char)
-    pathString = ''.join(newString)
-    return pathString
+def fix_single_slash(path_string):
+    new_string = []
+    for char in path_string:
+        new_string.append(char)
+        if char == '\\':
+            new_string.append(char)
+    path_string = ''.join(new_string)
+    return path_string
 
 
-def loadingDots(numDots=1, waitTime=.23):
+def loading_dots(num_dots=1, wait_time=.23):
     sys.stdout.write(". ")
-    sleep(waitTime)
-    if (numDots > 1):
-        loadingDots(numDots - 1)
+    sleep(wait_time)
+    if num_dots > 1:
+        loading_dots(num_dots - 1)
 
 
 def wait():
     print("\nPress ENTER to continue")
-    continueWaiting = True
-    while (continueWaiting):
-        if (Kbd.get_key() == Kbd.ENTER):
-            continueWaiting = False
+    continue_waiting = True
+    while continue_waiting:
+        if Kbd.get_key() == Kbd.ENTER:
+            continue_waiting = False
 
 
 def get_byte_from_DM_ASCII_file(filename, target_byte):
@@ -326,16 +327,16 @@ def get_byte_from_DM_ASCII_file(filename, target_byte):
     target_line = ""
 
     for line in lines:
-        if ("Block" in line):
+        if "Block" in line:
             data = re.search("LBA= ([0-9]+) ", line)
-            if (data):
+            if data:
                 lba = data.group(1)
         else:
             data = re.search("^([0-9A-F]+) ", line)
-            if (data):
+            if data:
                 line_label = data.group(1)
                 line_label = int(line_label, 16) + (512 * int(lba))
-                if (target_byte < (line_label + 16)):
+                if target_byte < (line_label + 16):
                     target_line = line
                     break
 
@@ -350,7 +351,7 @@ def get_little_endian_from_DM_ASCII_file(filename, first_address, last_address, 
     for i in range(last_address, (first_address - 1), -1):
         new_byte = get_byte_from_DM_ASCII_file(filename, i)
         total += new_byte
-    if (print_hex):
+    if print_hex:
         print(total)
     return total
 
@@ -360,7 +361,7 @@ def get_ASCII_string_from_DM_ASCII_file(filename, first_address, last_address, p
     for i in range(first_address, last_address + 1):
         new_byte = get_byte_from_DM_ASCII_file(filename, i)
         total += chr(int(new_byte, 16))
-    if (print_string):
+    if print_string:
         print(total)
     return total
 
@@ -370,5 +371,5 @@ def initialize():
     print(colorama.Back.WHITE)
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     Kbd.print_key_ord()

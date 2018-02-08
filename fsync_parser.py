@@ -3,15 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import re
-import sys
-import JUtil as JU
-import pathlib
-from tkinter import filedialog, messagebox
+from tkinter import filedialog
 import tkinter.ttk
 import datetime
 
 
-class Drive_Latencies():
+class DriveLatencies:
 
     def __init__(self, title=""):
 
@@ -26,7 +23,7 @@ class Drive_Latencies():
 
     def populate(self, title=None, dialog=None):
 
-        if (not dialog):
+        if not dialog:
             dialog = "Choose your file for " + self.title
 
         root = tkinter.Tk()
@@ -44,15 +41,15 @@ class Drive_Latencies():
 
         transfer = 1
         for line in text:
-            if ("ns" in line):
+            if "ns" in line:
                 data = re.search("^.* = ([0-9]+) s, ([0-9]+) ns$", line)
-                if (data):
+                if data:
                     self.transfers += (transfer,)
                     transfer += 1
                     seconds = float(data.group(1).strip())
                     nanoseconds = float(data.group(2).strip())
-                    miliseconds = (seconds * 1000) + (nanoseconds / 1000000)
-                    self.latencies += (miliseconds,)
+                    milliseconds = (seconds * 1000) + (nanoseconds / 1000000)
+                    self.latencies += (milliseconds,)
 
         self.min = min(self.latencies)
         self.max = max(self.latencies)
@@ -60,7 +57,7 @@ class Drive_Latencies():
         self.median = median(self.latencies)
         self.total_min = sum(self.latencies) / (1000 * 60)
 
-        if (title):
+        if title:
             self.title = title
 
     def get_summary(self):
@@ -75,7 +72,7 @@ class Drive_Latencies():
         return summary
 
 
-class Chart_Styler():
+class ChartStyler:
 
     def __init__(self):
         self.colors = ["b", "g", "r", "k", "c", "m", "y"]
@@ -96,7 +93,7 @@ def main():
     now = datetime.datetime.now()
     drives = []
     charts = []
-    styles = Chart_Styler()
+    styles = ChartStyler()
     legend_points = ()
     legend_names = ()
 
@@ -106,31 +103,31 @@ def main():
 
     standard_EN = standard_EN[0].upper()
 
-    if (standard_EN == "Y"):
+    if standard_EN == "Y":
 
-        drive_8G = Drive_Latencies(title=(fw_version + " 8GB   SLC  0%WLE"))
+        drive_8G = DriveLatencies(title=(fw_version + " 8GB   SLC  0%WLE"))
         drives.append(drive_8G)
 
-        drive_50G = Drive_Latencies(title=(fw_version + " 50GB  4PL 50%WLE"))
+        drive_50G = DriveLatencies(title=(fw_version + " 50GB  4PL 50%WLE"))
         drives.append(drive_50G)
 
-        drive_100G = Drive_Latencies(title=(fw_version + " 100GB 4PL 50%WLE"))
+        drive_100G = DriveLatencies(title=(fw_version + " 100GB 4PL 50%WLE"))
         drives.append(drive_100G)
 
-        drive_200G = Drive_Latencies(title=(fw_version + " 200GB MLC  0%WLE"))
+        drive_200G = DriveLatencies(title=(fw_version + " 200GB MLC  0%WLE"))
         drives.append(drive_200G)
 
     else:
         num_drives = input("How many drives would you like to process?\n>>> ")
         int_received = False
-        while (not int_received):
+        while not int_received:
             try:
                 num_drives = int(num_drives)
                 int_received = True
             except ValueError:
                 print("ERROR: You must enter an integer")
                 num_drives = input("How many drives would you like to process?\n>>> ")
-        if (num_drives <= 0):
+        if num_drives <= 0:
             print("Invalid number of drives\n")
             exit(0)
         else:
@@ -142,7 +139,7 @@ def main():
                 wle = input("    What write latency enhancement was used on the drive?\n    >>> ")
 
                 title = fw_version + " " + capacity + "GB " + flash + " " + wle + "_WLE"
-                drive = Drive_Latencies(title)
+                drive = DriveLatencies(title)
                 drives.append(drive)
 
     for drive in drives:
@@ -172,5 +169,5 @@ def main():
     print("Chart Saved to <" + filename + ".png> in C:\\py\\fsync")
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     main()

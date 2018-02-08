@@ -4,8 +4,6 @@ import argparse
 import os
 import re
 import sys
-import JUtil as JU
-
 
 def main(argv):
     txt_files_parsed = 0
@@ -19,7 +17,7 @@ def main(argv):
 
     root = tkinter.Tk()
     root.withdraw()
-    root.filename = filedialog.askopenfilenames(initialdir=("C:\\Users\\Jake\\Desktop\\Projects\\Regression Testing"),
+    root.filename = filedialog.askopenfilenames(initialdir="C:\\Users\\Jake\\Desktop\\Projects\\Regression Testing",
                                                 title='Choose your files', filetypes=(('all files', '*.*'),))
     # if we don't get a filename just bail
     if root.filename:
@@ -32,7 +30,7 @@ def main(argv):
 
     for infile in infile_names:
 
-        if (infile[-4:] == ".txt"):
+        if infile[-4:] == ".txt":
 
             text = read_file(infile, args.verbose)
 
@@ -58,7 +56,7 @@ def main(argv):
             build_csv_file(log_list, outfile_name, args.verbose)
             txt_files_parsed += 1
 
-        elif (infile[-4:] == "html"):
+        elif infile[-4:] == "html":
 
             text = read_file(infile, args.verbose)
 
