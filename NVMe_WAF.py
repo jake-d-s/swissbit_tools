@@ -68,7 +68,9 @@ def main():
 
     root = tkinter.Tk()
     root.withdraw()
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select BEFORE Test Log Page 02 (SMART)',
+    waf_directory = "C:\\Users\\Jake\\Desktop\\Projects\\PCIe Controller Evaluation\\PCIe E8 WAF"
+    root.filename = filedialog.askopenfilename(initialdir=waf_directory,
+                                               title='Select BEFORE Test Log Page 02 (SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
     if root.filename:
@@ -76,7 +78,8 @@ def main():
     else:
         exit(0)
         
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(), title='Select AFTER Test Log Page 02 (SMART)',
+    root.filename = filedialog.askopenfilename(initialdir=waf_directory,
+                                               title='Select AFTER Test Log Page 02 (SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
     if root.filename:
@@ -84,7 +87,7 @@ def main():
     else:
         exit(0)
         
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+    root.filename = filedialog.askopenfilename(initialdir=waf_directory,
                                                title='Select BEFORE Test Log Page C0 (Vendor SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
@@ -93,7 +96,7 @@ def main():
     else:
         exit(0)
         
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
+    root.filename = filedialog.askopenfilename(initialdir=waf_directory,
                                                title='Select AFTER Test Log Page C0 (Vendor SMART)',
                                                filetypes=(('text files', '*.txt'), ('all files', '*.*')))
     # if we don't get a filename just bail
