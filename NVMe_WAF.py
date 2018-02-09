@@ -119,7 +119,9 @@ def main():
     text = ""
     text += "Current time: " + now + "\n"
     text += capacity + "GB E8 Drive running " + workload + " workload\n"
-    text += "Super Block Size = " + str(erase_block_size) + " bytes or " + str(sb_MB) + "MB / block\n\n"
+    text += "Super Block Size = " + str(erase_block_size) + " bytes or " + str(sb_MB) + "MB / block\n"
+    text += "Calculations based on a " + str(years_rated) + " year rated life "
+    text += "and " + str(pe_count) + " P/E cycles\n\n"
     
     text += "SMART BEFORE\n"
     (before_host_writes, new_text) = get_host_writes(before_SMART_file)
