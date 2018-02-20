@@ -3,6 +3,9 @@ import pickle
 import os.path
 from tkinter import filedialog, messagebox
 
+sb_blue = "#07C0F5"
+lighter_blue = "#A2E9Fd"
+
 class TTTPlayer:
     score_index = {"WIN": 0, "LOSE": 1, "DRAW": 2}
 
@@ -39,27 +42,30 @@ class TTTPlayersManager:
     def add_player(self):
         #  GUI info
         self.root = tk.Tk()
-        name_label = tk.Label(master=self.root, text="Write your player name:", padx=5, pady=5)
-        self.name_entry = tk.Entry(master=self.root)
+        self.root.minsize(width=330, height=160)
+        self.root.config(bg=sb_blue)
+        name_label = tk.Label(master=self.root, text="Write your player name:", bg=sb_blue)
+        self.name_entry = tk.Entry(master=self.root, bg=lighter_blue)
         self.name_entry.insert(0, "Player 1")
 
-        mark_label = tk.Label(master=self.root, text="Choose a 45x45 .gif file as your mark", padx=5, pady=5)
-        self.mark_entry = tk.Entry(master=self.root)
+        mark_label = tk.Label(master=self.root, text="Choose a 40x40 .gif file as your mark  ", bg=sb_blue)
+        self.mark_entry = tk.Entry(master=self.root, bg=lighter_blue)
         self.mark_entry.insert(0, "C:\\py\\tictac\\x_red.gif")
-        mark_button = tk.Button(master=self.root, command=self._browse_marks, text="Browse", padx=5, pady=5)
-        process_button = tk.Button(master=self.root, command=self._process_add_player, text="Add Player", padx=5, pady=5)
+        mark_button = tk.Button(master=self.root, command=self._browse_marks, text="Browse", bg=lighter_blue)
+        process_button = tk.Button(master=self.root, command=self._process_add_player, text="Add Player",
+                                   bg=lighter_blue)
 
-        name_label.grid(row=0, column=0)
-        self.name_entry.grid(row=1, column=0, columnspan=2)
-        mark_label.grid(row=2, column=0)
-        mark_button.grid(row=2, column=1)
-        self.mark_entry.grid(row=3, column=0, columnspan=2)
-        process_button.grid(row=4, column=0, columnspan=2)
+        name_label.grid(row=0, column=0, sticky=tk.W)
+        self.name_entry.grid(row=1, column=0, columnspan=2, sticky=tk.W+tk.E)
+        mark_label.grid(row=2, column=0, sticky=tk.W)
+        mark_button.grid(row=2, column=1, sticky=tk.E)
+        self.mark_entry.grid(row=3, column=0, columnspan=2, sticky=tk.W+tk.E)
+        process_button.grid(row=4, column=0, columnspan=2, sticky=tk.W+tk.E)
         self.root.mainloop()
 
     def _browse_marks(self):
         self.root.filename = filedialog.askopenfilename(initialdir=self.mark_dir,
-                                                        title='Choose a 45x45 .gif file as your mar',
+                                                        title='Choose a 40x40 .gif file as your mar',
                                                         filetypes=(('gif files', '*.gif'), ('all files', '*.*')))
         # if we don't get a filename just bail
         if self.root.filename:
@@ -115,19 +121,21 @@ class TicTacToe:
         self.grid_y = 50
         #  TTT Board
         self.root = tk.Tk()
+        self.root.config(bg=sb_blue)
         self.root.minsize(self.grid_x + 300, self.grid_y + 180)
         self.grid = tk.PhotoImage(file="C:\\py\\tictac\\grid.gif")
         self.grid_label = tk.Label(master=self.root, image=self.grid, padx=10, pady=10)
-        self.grid_label.bind("<Button-1>", self.place_player_mark)
-        self.grid_label.bind("<Button-3>", self.place_enemy_mark)
+        #  self.grid_label.bind("<Button-1>", self.place_player_mark)
+        #  self.grid_label.bind("<Button-3>", self.place_enemy_mark)
+        self.grid_label.bind("<Button-1>", self._place_mark)
         self.grid_label.place(x=self.grid_x, y=self.grid_y)
         #  Buttons
-        self.reset_button = tk.Button(master=self.root, command=self.reset, text="RESET")
+        self.reset_button = tk.Button(master=self.root, command=self.reset, text="RESET", bg=lighter_blue)
         self.reset_button.place(x=self.grid_x + 200, y=self.grid_y + 30)
         #  Menus
-        master_menu = tk.Menu(self.root)
+        master_menu = tk.Menu(self.root, bg=sb_blue)
         self.root.config(menu=master_menu)
-        player_menu = tk.Menu(master_menu)
+        player_menu = tk.Menu(master_menu, bg=lighter_blue)
         master_menu.add_cascade(menu=player_menu, label="Player Configuration")
         player_menu.add_command(label="RESET", command=self.reset)
         player_menu.add_separator()
@@ -142,6 +150,7 @@ class TicTacToe:
         self.marks = []
         self.positions = ["?", "?", "?", "?", "?", "?", "?", "?", "?"]
         self.running = True
+        self.is_player = True
 
     def place_player_mark(self, event):
         self._place_mark(event, True)
@@ -149,24 +158,29 @@ class TicTacToe:
     def place_enemy_mark(self, event):
         self._place_mark(event, False)
 
-    def _place_mark(self, event, is_player):
+    def _place_mark(self, event, is_player=None):
         x, y, pos = self.get_square(event.x, event.y)
         if self.running:
-            if is_player:
-                mark = tk.PhotoImage(master=self.root, file=self.pm.get_mark(self.player_index))
+            if self.is_player:
+                mark = tk.PhotoImage(file=self.pm.get_mark(self.player_index))
                 self.positions[pos] = self.pm.get_name(self.player_index)
             else:
-                mark = tk.PhotoImage(master=self.root, file=self.pm.get_mark(self.enemy_index))
+                mark = tk.PhotoImage(file=self.pm.get_mark(self.enemy_index))
                 self.positions[pos] = self.pm.get_name(self.enemy_index)
 
             new_label = tk.Label(master=self.root, image=mark)
             new_label.place(x=x, y=y)
             self.marks.append(new_label)
+            self.marks.append(mark) # Can't lose reference to image or it won't display
             self.root.update()
+            self.is_player = not self.is_player
 
     def reset(self):
         for mark in self.marks:
-            mark.destroy()
+            try:
+                mark.destroy() # For tk Labels
+            except AttributeError:
+                del mark # For tk PhotoImages
         self.marks = []
         self.root.update()
 
@@ -198,7 +212,7 @@ class TicTacToe:
             if game_won:
                 print(winner + " wins!")
                 self.running = False
-            elif len(self.marks) > 8:
+            elif len(self.marks) > 16:
                 print("Stalemate :(")
                 self.running = False
         self.root.after(300, self.run)
@@ -264,11 +278,6 @@ def test():
 
     pm = TTTPlayersManager()
     pm.add_player()
-
-    for player in pm.players:
-        print(player.name)
-        print(player.mark_file)
-
 
 if __name__ == "__main__":
     main()
