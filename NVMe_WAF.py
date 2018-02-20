@@ -179,44 +179,5 @@ def main():
     print(text)
 
 
-def test_erase_counts():
-
-    root = tkinter.Tk()
-    root.withdraw()
-        
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
-                                               title='Select BEFORE Test Log Page C0 (Vendor SMART)',
-                                               filetypes=(('text files', '*.txt'), ('all files', '*.*')))
-    # if we don't get a filename just bail
-    if root.filename:
-        before_VendorSMART_file = root.filename
-    else:
-        exit(0)
-        
-    root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
-                                               title='Select AFTER Test Log Page C0 (Vendor SMART)',
-                                               filetypes=(('text files', '*.txt'), ('all files', '*.*')))
-    # if we don't get a filename just bail
-    if root.filename:
-        after_VendorSMART_file = root.filename
-    else:
-        exit(0)
-        
-    print("FLASH WRITES BEFORE")
-    flash_writes = get_flash_writes(before_VendorSMART_file)
-    print("ERASE COUNT BEFORE")
-    erase_count = get_total_erase_count(before_VendorSMART_file)
-    
-    print("FLASH WRITES AFTER")
-    flash_writes = get_flash_writes(after_VendorSMART_file) - flash_writes
-    print("ERASE COUNT AFTER")
-    erase_count = get_total_erase_count(after_VendorSMART_file) - erase_count
-
-    block_size = flash_writes / erase_count
-    print("\nAssuming Flash Writes ~= Erase Count")
-    print("Erase Block size should = Flash Writes / Erase Count")
-    print("Flash Writes / Erase Count = " + str(block_size))
-
-
 if __name__ == "__main__":
     main()
