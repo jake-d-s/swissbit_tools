@@ -108,8 +108,25 @@ class TTTPlayersManager:
         scores = self.players[index].scores
         return scores
 
+    def get_scores_string(self, index):
+        scores = self.get_scores(index)
+        score_string = self.get_name(index).ljust(20)
+        score_string += " - Wins:" + str(scores[TTTPlayer.score_index["WIN"]])
+        score_string += " Losses:" + str(scores[TTTPlayer.score_index["LOSE"]])
+        score_string += " Stalemates:" + str(scores[TTTPlayer.score_index["DRAW"]])
+        return score_string
+
     def add_score(self, index, score_kind):
-        pass # TODO
+        score_kind = score_kind.upper()
+        if score_kind not in TTTPlayer.score_index.keys():
+            pass
+        else:
+            self.players[index].scores[TTTPlayer.score_index[score_kind]] += 1
+            self.save_players()
+
+    def clear_score(self, index):
+        self.players[index].scores = [0, 0, 0]
+        self.save_players()
 
 
 class TicTacToe:
@@ -131,20 +148,30 @@ class TicTacToe:
         self.grid_label.place(x=self.grid_x, y=self.grid_y)
         #  Buttons
         self.reset_button = tk.Button(master=self.root, command=self.reset, text="RESET", bg=lighter_blue)
-        self.reset_button.place(x=self.grid_x + 200, y=self.grid_y + 30)
+        self.score_button = tk.Button(master=self.root, command=self.display_all_scores, text="SCORES", bg=lighter_blue)
+        reset_button_x = self.grid_x + 200
+        reset_button_y = y=self.grid_y + 30
+        score_button_x = reset_button_x - 5
+        score_button_y = reset_button_y + 50
+        self.reset_button.place(x=reset_button_x, y=reset_button_y)
+        self.score_button.place(x=score_button_x, y=score_button_y)
+
         #  Menus
-        master_menu = tk.Menu(self.root, bg=sb_blue)
-        self.root.config(menu=master_menu)
-        player_menu = tk.Menu(master_menu, bg=lighter_blue)
-        master_menu.add_cascade(menu=player_menu, label="Player Configuration")
-        player_menu.add_command(label="RESET", command=self.reset)
-        player_menu.add_separator()
-        player_menu.add_command(label="Edit Player Config", command=lambda: print("config"))
+        self.master_menu = tk.Menu(self.root, bg=sb_blue)
+        self.root.config(menu=self.master_menu)
+        self.config_menu = tk.Menu(self.master_menu, bg=lighter_blue, tearoff=False)
+        self.master_menu.add_cascade(menu=self.config_menu, label="Configuration")
+        self.config_menu.add_command(label="RESET", command=self.reset)
+        self.config_menu.add_separator()
+        self.config_menu.add_command(label="Edit Player Config", command=lambda: print("config"))
+        self.player_menu = tk.Menu(self.config_menu, bg=lighter_blue, tearoff=False)
 
         #  Player customizable info
         self.pm = TTTPlayersManager()
-        self.player_index = 0
-        self.enemy_index = 1
+        self.player_index = tk.IntVar()
+        self.player_index.set(value=0)
+        self.enemy_index = tk.IntVar()
+        self.enemy_index.set(value=1)
 
         #  Game info
         self.marks = []
@@ -152,28 +179,24 @@ class TicTacToe:
         self.running = True
         self.is_player = True
 
-    def place_player_mark(self, event):
-        self._place_mark(event, True)
 
-    def place_enemy_mark(self, event):
-        self._place_mark(event, False)
-
-    def _place_mark(self, event, is_player=None):
+    def _place_mark(self, event):
         x, y, pos = self.get_square(event.x, event.y)
         if self.running:
-            if self.is_player:
-                mark = tk.PhotoImage(file=self.pm.get_mark(self.player_index))
-                self.positions[pos] = self.pm.get_name(self.player_index)
-            else:
-                mark = tk.PhotoImage(file=self.pm.get_mark(self.enemy_index))
-                self.positions[pos] = self.pm.get_name(self.enemy_index)
+            if self.positions[pos] == "?":
+                if self.is_player:
+                    mark = tk.PhotoImage(file=self.pm.get_mark(self.player_index.get()))
+                    self.positions[pos] = self.player_index.get()
+                else:
+                    mark = tk.PhotoImage(file=self.pm.get_mark(self.enemy_index.get()))
+                    self.positions[pos] = self.enemy_index.get()
 
-            new_label = tk.Label(master=self.root, image=mark)
-            new_label.place(x=x, y=y)
-            self.marks.append(new_label)
-            self.marks.append(mark) # Can't lose reference to image or it won't display
-            self.root.update()
-            self.is_player = not self.is_player
+                new_label = tk.Label(master=self.root, image=mark)
+                new_label.place(x=x, y=y)
+                self.marks.append(new_label)
+                self.marks.append(mark) # Can't lose reference to image or it won't display
+                self.root.update()
+                self.is_player = not self.is_player
 
     def reset(self):
         for mark in self.marks:
@@ -210,11 +233,17 @@ class TicTacToe:
         if self.running:
             game_won, winner = self.check_win()
             if game_won:
-                print(winner + " wins!")
                 self.running = False
+                if winner == self.player_index.get():
+                    self.pm.add_score(self.player_index.get(), "WIN")
+                    self.pm.add_score(self.enemy_index.get(), "LOSE")
+                else:
+                    self.pm.add_score(self.player_index.get(), "LOSE")
+                    self.pm.add_score(self.enemy_index.get(), "WIN")
             elif len(self.marks) > 16:
-                print("Stalemate :(")
                 self.running = False
+                self.pm.add_score(self.player_index.get(), "DRAW")
+                self.pm.add_score(self.enemy_index.get(), "DRAW")
         self.root.after(300, self.run)
 
     def get_square(self, x, y):
@@ -267,6 +296,24 @@ class TicTacToe:
 
         return pos_x, pos_y, pos
 
+    def update_player_menu(self):
+        pass
+        #TODO
+
+    def get_all_scores(self):
+        score_string = ""
+        for i in range(len(self.pm.players)):
+            score_string += self.pm.get_scores_string(i) + "\n"
+        return score_string
+
+    def display_all_scores(self):
+        text = self.get_all_scores()
+        root = tk.Tk()
+        root.config(bg=sb_blue)
+        label = tk.Label(master=root, text=text, bg=lighter_blue, font="TkFixedFont")
+        label.pack()
+        root.mainloop()
+
 
 def main():
     game = TicTacToe()
@@ -276,7 +323,8 @@ def main():
 
 def test():
 
-    pm = TTTPlayersManager()
+    pm = TTTPlayersManager([])
+    pm.add_player()
     pm.add_player()
 
 if __name__ == "__main__":
