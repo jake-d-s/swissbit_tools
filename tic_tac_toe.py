@@ -184,8 +184,6 @@ class TicTacToe:
         self.master_menu.add_cascade(menu=self.player_menu, label="Player")
         self.master_menu.add_cascade(menu=self.enemy_menu, label="Enemy")
         self.config_menu.add_cascade(menu=self.delete_menu, label="Delete Player")
-
-
         #  Game info
         self.marks = []
         self.positions = ["?", "?", "?", "?", "?", "?", "?", "?", "?"]
@@ -402,11 +400,6 @@ def main(argv):
     game.run()
     game.root.mainloop()
 
-
-def test():
-    pm = TTTPlayersManager([])
-    pm.add_player()
-    pm.add_player()
 
 if __name__ == "__main__":
     main(sys.argv[1:])
