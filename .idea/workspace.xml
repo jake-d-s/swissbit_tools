@@ -34,27 +34,41 @@
       <file leaf-file-name="tic_tac_toe.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tic_tac_toe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="312" column="83" lean-forward="false" selection-start-line="312" selection-start-column="83" selection-end-line="312" selection-end-column="83" />
+            <state relative-caret-position="276">
+              <caret line="332" column="0" lean-forward="true" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
               <folding>
-                <element signature="e#395#715#0" expanded="false" />
-                <element signature="e#753#881#0" expanded="false" />
-                <element signature="e#810#881#0" expanded="false" />
-                <element signature="e#919#1012#0" expanded="false" />
-                <element signature="e#1048#2317#0" expanded="false" />
-                <element signature="e#2736#2827#0" expanded="false" />
-                <element signature="e#2904#3662#0" expanded="false" />
-                <element signature="e#3450#3662#0" expanded="false" />
-                <element signature="e#7052#7864#0" expanded="false" />
-                <element signature="e#7895#8214#0" expanded="false" />
-                <element signature="e#8314#8507#0" expanded="false" />
-                <element signature="e#8552#8745#0" expanded="false" />
-                <element signature="e#9901#11001#0" expanded="false" />
-                <element signature="e#9901#9913#0" expanded="false" />
-                <element signature="e#10124#10259#0" expanded="false" />
-                <element signature="e#10298#10433#0" expanded="false" />
-                <element signature="e#10460#10595#0" expanded="false" />
-                <element signature="e#11535#11593#0" expanded="false" />
+                <element signature="e#788#916#0" expanded="false" />
+                <element signature="e#845#916#0" expanded="false" />
+                <element signature="e#954#1047#0" expanded="false" />
+                <element signature="e#2809#2900#0" expanded="false" />
+                <element signature="e#7588#8400#0" expanded="false" />
+                <element signature="e#10552#11652#0" expanded="false" />
+                <element signature="e#10552#10564#0" expanded="false" />
+                <element signature="e#10775#10910#0" expanded="false" />
+                <element signature="e#10949#11084#0" expanded="false" />
+                <element signature="e#11111#11246#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/tkinter/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="2300" column="0" lean-forward="false" selection-start-line="2300" selection-start-column="0" selection-end-line="2300" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProcessLongPowerOn.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ProcessLongPowerOn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="270" column="15" lean-forward="true" selection-start-line="270" selection-start-column="15" selection-end-line="270" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -167,6 +181,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last.edited.regexp" value="Sample Text" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -212,7 +227,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Process_CDM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ProcessLongPowerOn" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -224,7 +239,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="swissbit_tools" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Process_CDM.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProcessLongPowerOn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -248,7 +263,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="tic_tac_toe" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="tic_tac_toe" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -372,19 +387,18 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Process_CDM" />
-      <item index="1" class="java.lang.String" itemvalue="Python.fsync_parser" />
-      <item index="2" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
-      <item index="3" class="java.lang.String" itemvalue="Python.tkinter_testing" />
-      <item index="4" class="java.lang.String" itemvalue="Python.tic_tac_toe" />
+      <item index="0" class="java.lang.String" itemvalue="Python.tic_tac_toe" />
+      <item index="1" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
+      <item index="2" class="java.lang.String" itemvalue="Python.fsync_parser" />
+      <item index="3" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
+      <item index="4" class="java.lang.String" itemvalue="Python.tkinter_testing" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.tic_tac_toe" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
         <item index="1" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
         <item index="2" class="java.lang.String" itemvalue="Python.tkinter_testing" />
         <item index="3" class="java.lang.String" itemvalue="Python.fsync_parser" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Process_CDM" />
       </list>
     </recent_temporary>
   </component>
@@ -500,7 +514,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519158375784</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added score tracking">
+      <created>1519235522024</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1519235522024</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -514,7 +535,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1929" y="-9" width="1938" height="1098" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18191433" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -522,11 +542,11 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32723358" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32723358" sideWeight="0.49710566" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32723358" sideWeight="0.49710566" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.38660398" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="-1083" y="86" width="810" height="987" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935413" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -593,7 +613,8 @@
     <MESSAGE value="Displays the rated life span and P/E cycles that the calculations are based on" />
     <MESSAGE value="Oops I broke TTT, I'll fix it later, gotta get to work" />
     <MESSAGE value="Figured it out, we need to keep a reference to the Photoimage for it to be displays" />
-    <option name="LAST_COMMIT_MESSAGE" value="Figured it out, we need to keep a reference to the Photoimage for it to be displays" />
+    <MESSAGE value="Added score tracking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added score tracking" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -602,7 +623,7 @@
           <url>file://$PROJECT_DIR$/ToDo.py</url>
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -622,24 +643,16 @@
         <state relative-caret-position="147">
           <caret line="7" column="94" lean-forward="false" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="94" />
           <folding>
-            <element signature="e#395#715#0" expanded="false" />
-            <element signature="e#753#881#0" expanded="false" />
-            <element signature="e#810#881#0" expanded="false" />
-            <element signature="e#919#1012#0" expanded="false" />
-            <element signature="e#1048#2317#0" expanded="false" />
-            <element signature="e#2736#2827#0" expanded="false" />
-            <element signature="e#2904#3662#0" expanded="false" />
-            <element signature="e#3450#3662#0" expanded="false" />
-            <element signature="e#7052#7864#0" expanded="false" />
-            <element signature="e#7895#8214#0" expanded="false" />
-            <element signature="e#8314#8507#0" expanded="false" />
-            <element signature="e#8552#8745#0" expanded="false" />
-            <element signature="e#9901#11001#0" expanded="false" />
-            <element signature="e#9901#9913#0" expanded="false" />
-            <element signature="e#10124#10259#0" expanded="false" />
-            <element signature="e#10298#10433#0" expanded="false" />
-            <element signature="e#10460#10595#0" expanded="false" />
-            <element signature="e#11535#11593#0" expanded="false" />
+            <element signature="e#788#916#0" expanded="false" />
+            <element signature="e#845#916#0" expanded="false" />
+            <element signature="e#954#1047#0" expanded="false" />
+            <element signature="e#2809#2900#0" expanded="false" />
+            <element signature="e#7588#8400#0" expanded="false" />
+            <element signature="e#10552#11652#0" expanded="false" />
+            <element signature="e#10552#10564#0" expanded="false" />
+            <element signature="e#10775#10910#0" expanded="false" />
+            <element signature="e#10949#11084#0" expanded="false" />
+            <element signature="e#11111#11246#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -686,6 +699,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9135">
           <caret line="444" column="9" lean-forward="false" selection-start-line="444" selection-start-column="9" selection-end-line="444" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -760,6 +776,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9135">
           <caret line="444" column="9" lean-forward="false" selection-start-line="444" selection-start-column="9" selection-end-line="444" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -875,13 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ProcessLongPowerOn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="266" column="31" lean-forward="false" selection-start-line="266" selection-start-column="31" selection-end-line="266" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CDMcharttest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -942,29 +954,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ProcessLongPowerOn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="270" column="15" lean-forward="true" selection-start-line="270" selection-start-column="15" selection-end-line="270" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="2300" column="0" lean-forward="false" selection-start-line="2300" selection-start-column="0" selection-end-line="2300" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tic_tac_toe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="312" column="83" lean-forward="false" selection-start-line="312" selection-start-column="83" selection-end-line="312" selection-end-column="83" />
+        <state relative-caret-position="276">
+          <caret line="332" column="0" lean-forward="true" selection-start-line="332" selection-start-column="0" selection-end-line="332" selection-end-column="0" />
           <folding>
-            <element signature="e#395#715#0" expanded="false" />
-            <element signature="e#753#881#0" expanded="false" />
-            <element signature="e#810#881#0" expanded="false" />
-            <element signature="e#919#1012#0" expanded="false" />
-            <element signature="e#1048#2317#0" expanded="false" />
-            <element signature="e#2736#2827#0" expanded="false" />
-            <element signature="e#2904#3662#0" expanded="false" />
-            <element signature="e#3450#3662#0" expanded="false" />
-            <element signature="e#7052#7864#0" expanded="false" />
-            <element signature="e#7895#8214#0" expanded="false" />
-            <element signature="e#8314#8507#0" expanded="false" />
-            <element signature="e#8552#8745#0" expanded="false" />
-            <element signature="e#9901#11001#0" expanded="false" />
-            <element signature="e#9901#9913#0" expanded="false" />
-            <element signature="e#10124#10259#0" expanded="false" />
-            <element signature="e#10298#10433#0" expanded="false" />
-            <element signature="e#10460#10595#0" expanded="false" />
-            <element signature="e#11535#11593#0" expanded="false" />
+            <element signature="e#788#916#0" expanded="false" />
+            <element signature="e#845#916#0" expanded="false" />
+            <element signature="e#954#1047#0" expanded="false" />
+            <element signature="e#2809#2900#0" expanded="false" />
+            <element signature="e#7588#8400#0" expanded="false" />
+            <element signature="e#10552#11652#0" expanded="false" />
+            <element signature="e#10552#10564#0" expanded="false" />
+            <element signature="e#10775#10910#0" expanded="false" />
+            <element signature="e#10949#11084#0" expanded="false" />
+            <element signature="e#11111#11246#0" expanded="false" />
           </folding>
         </state>
       </provider>

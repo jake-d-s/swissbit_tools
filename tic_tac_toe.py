@@ -21,6 +21,7 @@ class TTTPlayersManager:
         self.save_file = "C:\\py\\tictac\\players.pk1"
         self.mark_dir = "C:\\py\\tictac"
         self.players = []
+        self.added_players = False
         if players_list is None:
             self.load_players()
         else:
@@ -44,6 +45,7 @@ class TTTPlayersManager:
         self.root = tk.Tk()
         self.root.minsize(width=330, height=160)
         self.root.config(bg=sb_blue)
+        self.root.title("Add Player")
         name_label = tk.Label(master=self.root, text="Write your player name:", bg=sb_blue)
         self.name_entry = tk.Entry(master=self.root, bg=lighter_blue)
         self.name_entry.insert(0, "Player 1")
@@ -95,6 +97,7 @@ class TTTPlayersManager:
             self.players.append(new_player)
             self.root.destroy()
             self.save_players()
+            self.added_players = True
 
     def get_mark(self, index):
         mark = self.players[index].mark_file
@@ -111,9 +114,9 @@ class TTTPlayersManager:
     def get_scores_string(self, index):
         scores = self.get_scores(index)
         score_string = self.get_name(index).ljust(20)
-        score_string += " - Wins:" + str(scores[TTTPlayer.score_index["WIN"]])
-        score_string += " Losses:" + str(scores[TTTPlayer.score_index["LOSE"]])
-        score_string += " Stalemates:" + str(scores[TTTPlayer.score_index["DRAW"]])
+        score_string += " - W:" + str(scores[TTTPlayer.score_index["WIN"]])
+        score_string += " L:" + str(scores[TTTPlayer.score_index["LOSE"]])
+        score_string += " D:" + str(scores[TTTPlayer.score_index["DRAW"]])
         return score_string
 
     def add_score(self, index, score_kind):
@@ -132,30 +135,29 @@ class TTTPlayersManager:
 class TicTacToe:
 
     def __init__(self):
+        self.pm = TTTPlayersManager()
         #  GUI info
         #  Parameters
-        self.grid_x = 50
-        self.grid_y = 50
+        self.grid_x = 40
+        self.grid_y = 30
         #  TTT Board
         self.root = tk.Tk()
         self.root.config(bg=sb_blue)
         self.root.minsize(self.grid_x + 300, self.grid_y + 180)
+        self.root.title("Tic Tac Toe")
         self.grid = tk.PhotoImage(file="C:\\py\\tictac\\grid.gif")
         self.grid_label = tk.Label(master=self.root, image=self.grid, padx=10, pady=10)
-        #  self.grid_label.bind("<Button-1>", self.place_player_mark)
-        #  self.grid_label.bind("<Button-3>", self.place_enemy_mark)
         self.grid_label.bind("<Button-1>", self._place_mark)
         self.grid_label.place(x=self.grid_x, y=self.grid_y)
         #  Buttons
         self.reset_button = tk.Button(master=self.root, command=self.reset, text="RESET", bg=lighter_blue)
         self.score_button = tk.Button(master=self.root, command=self.display_all_scores, text="SCORES", bg=lighter_blue)
         reset_button_x = self.grid_x + 200
-        reset_button_y = y=self.grid_y + 30
-        score_button_x = reset_button_x - 5
+        reset_button_y = self.grid_y
+        score_button_x = reset_button_x - 6
         score_button_y = reset_button_y + 50
         self.reset_button.place(x=reset_button_x, y=reset_button_y)
         self.score_button.place(x=score_button_x, y=score_button_y)
-
         #  Menus
         self.master_menu = tk.Menu(self.root, bg=sb_blue)
         self.root.config(menu=self.master_menu)
@@ -163,15 +165,21 @@ class TicTacToe:
         self.master_menu.add_cascade(menu=self.config_menu, label="Configuration")
         self.config_menu.add_command(label="RESET", command=self.reset)
         self.config_menu.add_separator()
-        self.config_menu.add_command(label="Edit Player Config", command=lambda: print("config"))
+        self.config_menu.add_command(label="Add Player", command=self.add_player)
         self.player_menu = tk.Menu(self.config_menu, bg=lighter_blue, tearoff=False)
+        self.enemy_menu = tk.Menu(self.config_menu, bg=lighter_blue, tearoff=False)
+        self.delete_menu = tk.Menu(self.config_menu, bg=lighter_blue, tearoff=False)
+        self.master_menu.add_cascade(menu=self.player_menu, label="Player")
+        self.master_menu.add_cascade(menu=self.enemy_menu, label="Enemy")
+        self.config_menu.add_cascade(menu=self.delete_menu, label="Delete Player")
 
         #  Player customizable info
-        self.pm = TTTPlayersManager()
         self.player_index = tk.IntVar()
         self.player_index.set(value=0)
         self.enemy_index = tk.IntVar()
         self.enemy_index.set(value=1)
+        self.delete_index = tk.IntVar()
+        self.delete_index.set(0)
 
         #  Game info
         self.marks = []
@@ -179,6 +187,10 @@ class TicTacToe:
         self.running = True
         self.is_player = True
 
+        self.update_player_menus()
+
+    def add_player(self):
+        self.pm.add_player()
 
     def _place_mark(self, event):
         x, y, pos = self.get_square(event.x, event.y)
@@ -244,6 +256,9 @@ class TicTacToe:
                 self.running = False
                 self.pm.add_score(self.player_index.get(), "DRAW")
                 self.pm.add_score(self.enemy_index.get(), "DRAW")
+        if self.pm.added_players:
+            self.update_player_menus()
+            self.pm.added_players = False
         self.root.after(300, self.run)
 
     def get_square(self, x, y):
@@ -296,12 +311,39 @@ class TicTacToe:
 
         return pos_x, pos_y, pos
 
-    def update_player_menu(self):
-        pass
-        #TODO
+    def update_player_menus(self):
+        self.player_menu.delete(0, tk.END)
+        self.enemy_menu.delete(0, tk.END)
+        self.delete_menu.delete(0, tk.END)
+        for i in range(len(self.pm.players)):
+            if self.enemy_index.get() != i:
+                self.player_menu.add_radiobutton(label=self.pm.get_name(i), variable=self.player_index, value=i,
+                                                 command=self.update_player_menus)
+        for i in range(len(self.pm.players)):
+            if self.player_index.get() != i:
+                self.enemy_menu.add_radiobutton(label=self.pm.get_name(i), variable=self.enemy_index, value=i,
+                                                command=self.update_player_menus)
+        for i in range(len(self.pm.players)):
+            self.delete_menu.add_radiobutton(label=self.pm.get_name(i), variable=self.delete_index, value=i)
+        self.delete_menu.add_separator()
+        self.delete_menu.add_command(label="Delete Selected", command=self.delete_player)
+
+
+        self.reset()
+
+    def delete_player(self):
+        confirm_delete = messagebox.askyesno("Confirm Delete", "Are you sure you want to delete player: " + self.pm.get_name(self.delete_index.get()))
+
+        if confirm_delete:
+            del self.pm.players[self.delete_index.get()]
+            self.player_index.set(0)
+            self.enemy_index.set(1)
+            self.pm.added_players = True
+            self.pm.save_players()
+            messagebox.showinfo("Select Player Again", "You must select your player again")
 
     def get_all_scores(self):
-        score_string = ""
+        score_string = "HIGH SCORES\n"
         for i in range(len(self.pm.players)):
             score_string += self.pm.get_scores_string(i) + "\n"
         return score_string
@@ -310,6 +352,7 @@ class TicTacToe:
         text = self.get_all_scores()
         root = tk.Tk()
         root.config(bg=sb_blue)
+        root.title("High Scores")
         label = tk.Label(master=root, text=text, bg=lighter_blue, font="TkFixedFont")
         label.pack()
         root.mainloop()
