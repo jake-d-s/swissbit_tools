@@ -9,6 +9,10 @@ sb_blue = "#07C0F5"
 lighter_blue = "#A2E9Fd"
 
 class TTTPlayer:
+    """
+    Class that holds information on each player for easy access.
+    Used by TTTPlayersManager
+    """
     score_index = {"WIN": 0, "LOSE": 1, "DRAW": 2}
 
     def __init__(self):
@@ -18,8 +22,16 @@ class TTTPlayer:
 
 
 class TTTPlayersManager:
+    """
+    Class used to do everything with the player profiles
+    """
 
     def __init__(self, players_list=None):
+        """
+        Initializes the players list. If a list is provided, then that list overwrites the saved list,
+        otherwise the saved list is loaded
+        :param players_list: option list to overwrite the list saved with pickle
+        """
         self.save_file = "C:\\py\\tictac\\players.pk1"
         self.mark_dir = "C:\\py\\tictac"
         self.players = []
@@ -34,15 +46,28 @@ class TTTPlayersManager:
         self.name_entry = None
 
     def save_players(self):
+        """
+        stores the current self.players list to self.save_file with pickle
+        :return: None
+        """
         with open(self.save_file, "wb") as out_file:
             pklr = pickle.Pickler(out_file, -1)
             pklr.dump(self.players)
 
     def load_players(self):
+        """
+        Load the players list saved in self.save_file
+        :return: None
+        """
         with open(self.save_file, "rb") as out_file:
             self.players = pickle.load(out_file)
 
     def add_player(self):
+        """
+        opens a separate dialog to add a player to self.players with a valid
+        .name and .mark and an initial .score of [0, 0, 0]
+        :return: None
+        """
         #  GUI info
         self.root = tk.Tk()
         self.root.minsize(width=330, height=160)
@@ -68,6 +93,11 @@ class TTTPlayersManager:
         self.root.mainloop()
 
     def _browse_marks(self):
+        """
+        Uses tk.filedialog to select a .gif file to use as an added players mark
+        tied to a button on the add_player GUI
+        :return: None
+        """
         self.root.filename = filedialog.askopenfilename(initialdir=self.mark_dir,
                                                         title='Choose a 40x40 .gif file as your mar',
                                                         filetypes=(('gif files', '*.gif'), ('all files', '*.*')))
@@ -79,7 +109,11 @@ class TTTPlayersManager:
             pass
 
     def _process_add_player(self):
-
+        """
+        Button command to close the add_player GUI and create a new player if the information entered is valid.
+        If the information is not valid, then an error will be shown instead
+        :return: None
+        """
         mark_file = self.mark_entry.get()
         name = self.name_entry.get()
         existing_names = []
@@ -102,18 +136,39 @@ class TTTPlayersManager:
             self.added_players = True
 
     def get_mark(self, index):
+        """
+        Returns the .gif filepath for a players mark. Which player is determined by the index given
+        :param index: an int used to index self.players
+        :return: self.players[index].mark_file, a string filepath to a .gif
+        """
         mark = self.players[index].mark_file
         return mark
 
     def get_name(self, index):
+        """
+        Returns the str name of the player in self.players at the given index
+        :param index: an int used to index self.players
+        :return: a string. self.players[index].name
+        """
         name = self.players[index].name
         return name
 
     def get_scores(self, index):
+        """
+        Returns the list of scores for a player given by index. Scores can be indexed with TTTPlayer.score_index,
+        a dictionary with the keys with "WIN", "LOSE", and "DRAW"
+        :param index: an int used to index self.playeers
+        :return: a list, self.players[index].scores
+        """
         scores = self.players[index].scores
         return scores
 
     def get_scores_string(self, index):
+        """
+        returns a pretty string with a players name, left justified for alignment, and then their scores, labeled
+        :param index: the index of the player in self.players whose scores will be returned
+        :return: a one line string with no "\n" containing pretty scores
+        """
         scores = self.get_scores(index)
         score_string = self.get_name(index).ljust(20)
         score_string += " - W:" + str(scores[TTTPlayer.score_index["WIN"]])
@@ -122,6 +177,12 @@ class TTTPlayersManager:
         return score_string
 
     def add_score(self, index, score_kind):
+        """
+        Increments the score for a player chosen by index. Which score is incremented is chosen by score kind
+        :param index: int: the index of a player in self.players
+        :param score_kind: a string selecting which score to increment. Must be "WIN", "LOSE", or "DRAW"
+        :return: None
+        """
         score_kind = score_kind.upper()
         if score_kind not in TTTPlayer.score_index.keys():
             pass
@@ -130,6 +191,11 @@ class TTTPlayersManager:
             self.save_players()
 
     def clear_score(self, index):
+        """
+        replaces a chosen players scores with [0, 0, 0]
+        :param index: which player's score will be replaced
+        :return: None
+        """
         self.players[index].scores = [0, 0, 0]
         self.save_players()
 
