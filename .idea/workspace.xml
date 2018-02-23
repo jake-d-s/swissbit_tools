@@ -7,8 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c877f4af-b32e-47ee-9cb6-84db37f99042" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Jake.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Jake.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/tic_tac_toe.py" afterPath="$PROJECT_DIR$/tic_tac_toe.py" />
+      <change beforePath="$PROJECT_DIR$/NVMe_WAF.py" afterPath="$PROJECT_DIR$/NVMe_WAF.py" />
+      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,34 +21,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ProcessLongPowerOn.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ProcessLongPowerOn.py">
+      <file leaf-file-name="NVMe_WAF.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/NVMe_WAF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1386">
-              <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+            <state relative-caret-position="336">
+              <caret line="226" column="45" lean-forward="false" selection-start-line="226" selection-start-column="45" selection-end-line="226" selection-end-column="45" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#644#1094#0" expanded="false" />
+                <element signature="e#1141#1418#0" expanded="false" />
+                <element signature="e#1462#1733#0" expanded="false" />
+                <element signature="e#1776#2161#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Process_CDM.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Process_CDM.py">
+      <file leaf-file-name="tic_tac_toe.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tic_tac_toe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7591">
-              <caret line="426" column="26" lean-forward="true" selection-start-line="426" selection-start-column="26" selection-end-line="426" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="builtins.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/-1149584262/builtins.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="794" column="8" lean-forward="false" selection-start-line="794" selection-start-column="8" selection-end-line="794" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="231">
+              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+                <element signature="e#604#1210#0" expanded="false" />
+                <element signature="e#1248#1497#0" expanded="false" />
+                <element signature="e#1535#1728#0" expanded="false" />
+                <element signature="e#1764#3253#0" expanded="false" />
+                <element signature="e#3292#3968#0" expanded="false" />
+                <element signature="e#4013#5044#0" expanded="false" />
+                <element signature="e#5085#5397#0" expanded="false" />
+                <element signature="e#5438#5699#0" expanded="false" />
+                <element signature="e#5742#6112#0" expanded="false" />
+                <element signature="e#6162#6804#0" expanded="false" />
+                <element signature="e#6858#7416#0" expanded="false" />
+                <element signature="e#7460#7688#0" expanded="false" />
+                <element signature="e#7741#10541#0" expanded="false" />
+                <element signature="e#10577#10597#0" expanded="false" />
+                <element signature="e#10641#11453#0" expanded="false" />
+                <element signature="e#11484#11803#0" expanded="false" />
+                <element signature="e#11838#12689#0" expanded="false" />
+                <element signature="e#12734#12785#0" expanded="false" />
+                <element signature="e#12814#14241#0" expanded="false" />
+                <element signature="e#14283#15383#0" expanded="false" />
+                <element signature="e#14283#14295#0" expanded="false" />
+                <element signature="e#14506#14641#0" expanded="false" />
+                <element signature="e#14680#14815#0" expanded="false" />
+                <element signature="e#14842#14977#0" expanded="false" />
+                <element signature="e#15428#16424#0" expanded="false" />
+                <element signature="e#16463#16931#0" expanded="false" />
+                <element signature="e#16971#17139#0" expanded="false" />
+                <element signature="e#17183#17431#0" expanded="false" />
+                <element signature="e#17454#18272#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,8 +121,9 @@
         <option value="$PROJECT_DIR$/forRuby.py" />
         <option value="$PROJECT_DIR$/venv/tkinter_testing.py" />
         <option value="$PROJECT_DIR$/tkinter_testing.py" />
-        <option value="$PROJECT_DIR$/NVMe_WAF.py" />
         <option value="$PROJECT_DIR$/tic_tac_toe.py" />
+        <option value="$PROJECT_DIR$/Display_Test.py" />
+        <option value="$PROJECT_DIR$/NVMe_WAF.py" />
       </list>
     </option>
   </component>
@@ -158,7 +186,7 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last.edited.regexp" value="Sample Text" />
+    <property name="last.edited.regexp" value="   erase WAF: 1.088618949835847" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -185,7 +213,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tic_tac_toe">
+  <component name="RunManager" selected="Python.NVMe_WAF">
+    <configuration name="Display_Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="swissbit_tools" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Display_Test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="NVMe_WAF" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -363,19 +409,21 @@
       <option name="_new_target" value="&quot;&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
-    <list size="5">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.tic_tac_toe" />
       <item index="1" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
       <item index="2" class="java.lang.String" itemvalue="Python.fsync_parser" />
       <item index="3" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
       <item index="4" class="java.lang.String" itemvalue="Python.tkinter_testing" />
+      <item index="5" class="java.lang.String" itemvalue="Python.Display_Test" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
-        <item index="1" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
-        <item index="2" class="java.lang.String" itemvalue="Python.tkinter_testing" />
-        <item index="3" class="java.lang.String" itemvalue="Python.fsync_parser" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Display_Test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
+        <item index="3" class="java.lang.String" itemvalue="Python.tkinter_testing" />
+        <item index="4" class="java.lang.String" itemvalue="Python.fsync_parser" />
       </list>
     </recent_temporary>
   </component>
@@ -519,7 +567,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519325315042</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="JK, wrote some doc strings. Not all of em though">
+      <created>1519334665777</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1519334665777</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView">
@@ -539,8 +594,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.50289434" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32723358" sideWeight="0.49710566" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="-3517" y="106" width="1282" height="885" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32723358" sideWeight="0.49710566" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.38660398" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="-1119" y="71" width="810" height="722" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -616,7 +671,8 @@
     <MESSAGE value="Added the ability to select and delete players. Just need some more main screen labels I think." />
     <MESSAGE value="Added Labels and moved player list clearing to the command line as opt -i. also cleaned up unused imports on NVMe_WAF" />
     <MESSAGE value="Finally removed the test function. It's done!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally removed the test function. It's done!" />
+    <MESSAGE value="JK, wrote some doc strings. Not all of em though" />
+    <option name="LAST_COMMIT_MESSAGE" value="JK, wrote some doc strings. Not all of em though" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -628,20 +684,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/HubWorld.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JUtil.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4557">
-          <caret line="223" column="17" lean-forward="false" selection-start-line="223" selection-start-column="17" selection-end-line="223" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Get_Sample_Info.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
@@ -661,11 +703,10 @@
         <state relative-caret-position="4326">
           <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
           <folding>
-            <element signature="e#126#576#0" expanded="false" />
-            <element signature="e#623#900#0" expanded="false" />
-            <element signature="e#944#1215#0" expanded="false" />
-            <element signature="e#1258#1643#0" expanded="false" />
-            <element signature="e#1663#6492#0" expanded="false" />
+            <element signature="e#644#1094#0" expanded="false" />
+            <element signature="e#1141#1418#0" expanded="false" />
+            <element signature="e#1462#1733#0" expanded="false" />
+            <element signature="e#1776#2161#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -675,7 +716,7 @@
         <state relative-caret-position="9135">
           <caret line="444" column="9" lean-forward="false" selection-start-line="444" selection-start-column="9" selection-end-line="444" selection-end-column="9" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -691,6 +732,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -827,11 +869,10 @@
         <state relative-caret-position="4326">
           <caret line="217" column="0" lean-forward="true" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
           <folding>
-            <element signature="e#126#576#0" expanded="false" />
-            <element signature="e#623#900#0" expanded="false" />
-            <element signature="e#944#1215#0" expanded="false" />
-            <element signature="e#1258#1643#0" expanded="false" />
-            <element signature="e#1663#6492#0" expanded="false" />
+            <element signature="e#644#1094#0" expanded="false" />
+            <element signature="e#1141#1418#0" expanded="false" />
+            <element signature="e#1462#1733#0" expanded="false" />
+            <element signature="e#1776#2161#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -841,7 +882,7 @@
         <state relative-caret-position="9135">
           <caret line="444" column="9" lean-forward="false" selection-start-line="444" selection-start-column="9" selection-end-line="444" selection-end-column="9" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -857,6 +898,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,17 +1154,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CDMcharttest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="320" column="4" lean-forward="false" selection-start-line="320" selection-start-column="4" selection-end-line="320" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/forRuby.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1200,6 +1236,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6363">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1296,17 +1335,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NVMe_WAF.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/-1149584262/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-          <folding>
-            <element signature="e#126#576#0" expanded="false" />
-            <element signature="e#623#900#0" expanded="false" />
-            <element signature="e#944#1215#0" expanded="false" />
-            <element signature="e#1258#1643#0" expanded="false" />
-            <element signature="e#1663#6492#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-394">
+          <caret line="794" column="8" lean-forward="false" selection-start-line="794" selection-start-column="8" selection-end-line="794" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Process_CDM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-179">
+          <caret line="95" column="41" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="95" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1315,23 +1356,31 @@
         <state relative-caret-position="-1386">
           <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/-1149584262/builtins.py">
+    <entry file="file://$PROJECT_DIR$/Display_Test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/table.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
-          <caret line="794" column="8" lean-forward="false" selection-start-line="794" selection-start-column="8" selection-end-line="794" selection-end-column="8" />
+          <caret line="214" column="6" lean-forward="false" selection-start-line="214" selection-start-column="6" selection-end-line="214" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tic_tac_toe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="192" column="33" lean-forward="false" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
+        <state relative-caret-position="231">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <element signature="e#604#1210#0" expanded="false" />
@@ -1367,11 +1416,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Process_CDM.py">
+    <entry file="file://$PROJECT_DIR$/CDMcharttest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7591">
-          <caret line="426" column="26" lean-forward="true" selection-start-line="426" selection-start-column="26" selection-end-line="426" selection-end-column="26" />
-          <folding />
+        <state relative-caret-position="21">
+          <caret line="313" column="30" lean-forward="false" selection-start-line="313" selection-start-column="30" selection-end-line="313" selection-end-column="30" />
+          <folding>
+            <element signature="e#233#1752#0" expanded="false" />
+            <element signature="e#1792#3157#0" expanded="false" />
+            <element signature="e#3301#3867#0" expanded="false" />
+            <element signature="e#3900#4776#0" expanded="false" />
+            <element signature="e#4835#5462#0" expanded="false" />
+            <element signature="e#5533#6936#0" expanded="false" />
+            <element signature="e#7030#7156#0" expanded="false" />
+            <element signature="e#7203#7708#0" expanded="false" />
+            <element signature="e#7758#14405#0" expanded="false" />
+            <element signature="e#14443#19261#0" expanded="false" />
+            <element signature="e#20589#21224#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NVMe_WAF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="226" column="45" lean-forward="false" selection-start-line="226" selection-start-column="45" selection-end-line="226" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#644#1094#0" expanded="false" />
+            <element signature="e#1141#1418#0" expanded="false" />
+            <element signature="e#1462#1733#0" expanded="false" />
+            <element signature="e#1776#2161#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

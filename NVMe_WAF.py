@@ -2,7 +2,27 @@ from tkinter import filedialog
 import tkinter.ttk
 import JUtil as JU
 import datetime
+import re
 
+class WAFEvent:
+
+    def __init__(self):
+        self.time = ""
+        self.capacity = ""
+        self.workload = ""
+        self.waf = ""
+        self.tbw = ""
+        self.dwpd = ""
+
+    def __str__(self):
+        string = self.time + "," + self.capacity + "," + self.workload + ","
+        string += self.waf + "," + self.tbw + "," + self.dwpd
+        return string
+
+    @staticmethod
+    def get_header():
+        string = "Time Processed,Drive Capacity[GB],Workload,WAF,TBW,DWPD"
+        return string
     
 def get_host_writes(filename):
     text = ""
@@ -57,6 +77,8 @@ def get_erase_block_size(capacity):
 
 
 def main():
+    log_txt_file = "C:\\py\\WAF\\WAF_logs.txt"
+    log_csv_file = "C:\\py\\WAF\\WAF_logs.csv"
 
     root = tkinter.Tk()
     root.withdraw()
@@ -165,9 +187,53 @@ def main():
     text += "++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
     text += "                                                        \n\n"
     
-    with open("C:\\py\\WAF\\WAF_logs.txt", "a") as outfile:
+    with open(log_txt_file, "a") as outfile:
         outfile.write(text)
-        
+    print(text)
+
+    with open(log_txt_file, "r") as log:
+        lines = log.readlines()
+
+    waf_event = WAFEvent()
+    waf_events = []
+
+    for line in lines:
+        if "Current time" in line:
+            data = re.search("^Current time: (.*?)$", line)
+            if data:
+                waf_event = WAFEvent()
+                waf_event.time = data.group(1)
+        elif "GB" in line:
+            data = re.search("^([0-9]*?)GB E8 Drive running (.*?) workload$", line)
+            if data:
+                waf_event.capacity = data.group(1)
+                waf_event.workload = data.group(2).upper()
+        elif "erase WAF" in line:
+            data = re.search("^.*?erase WAF: ([0-9\.]*?)$", line)
+            if data:
+                waf_event.waf = data.group(1)
+        elif "erase TBW" in line:
+            data = re.search("^.*?erase TBW: ([0-9\.]*?)$", line)
+            if data:
+                waf_event.tbw = data.group(1)
+        elif "erase DWPD" in line:
+            data = re.search("^.*?erase DWPD: ([0-9\.]*?)$", line)
+            if data:
+                waf_event.dwpd = data.group(1)
+        elif "+++" in line:
+            waf_events.append(waf_event)
+
+    text = WAFEvent.get_header()
+    waf_events.sort(key=lambda x: x.capacity)
+    waf_events.sort(key=lambda x: x.workload)
+
+    for event in waf_events:
+        text += "\n" + str(event)
+
+    with open(log_csv_file, "w") as file:
+        file.write(text)
+
+    print()
     print(text)
 
 
