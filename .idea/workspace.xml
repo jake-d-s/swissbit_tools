@@ -7,10 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c877f4af-b32e-47ee-9cb6-84db37f99042" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Jake.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Jake.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/NVMe_WAF.py" afterPath="$PROJECT_DIR$/NVMe_WAF.py" />
-      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" />
+      <change beforePath="$PROJECT_DIR$/forRuby.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/matplotlibtest.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/test.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/tic_tac_toe.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="NVMe_WAF.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NVMe_WAF.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NVMe_WAF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="226" column="45" lean-forward="false" selection-start-line="226" selection-start-column="45" selection-end-line="226" selection-end-column="45" />
+            <state relative-caret-position="861">
+              <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
                 <element signature="e#644#1094#0" expanded="false" />
@@ -37,11 +38,43 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="matplotlibtest.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../test_stuff/matplotlibtest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="441">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="morse_translater.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../test_stuff/morse_translater.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="character.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../test_stuff/character.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="tic_tac_toe.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tic_tac_toe.py">
+        <entry file="file://$PROJECT_DIR$/../test_stuff/tic_tac_toe.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+              <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <element signature="e#604#1210#0" expanded="false" />
@@ -124,14 +157,15 @@
         <option value="$PROJECT_DIR$/tic_tac_toe.py" />
         <option value="$PROJECT_DIR$/Display_Test.py" />
         <option value="$PROJECT_DIR$/NVMe_WAF.py" />
+        <option value="$PROJECT_DIR$/morse_translater.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1453" />
+    <option name="x" value="-3849" />
     <option name="y" value="-9" />
-    <option name="width" value="1022" />
-    <option name="height" value="718" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -213,7 +247,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.NVMe_WAF">
+  <component name="RunManager" selected="Python.morse_translater">
     <configuration name="Display_Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -268,7 +302,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="fsync_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="morse_translater" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -280,7 +314,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="swissbit_tools" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fsync_parser.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Jake\PycharmProjects\test_stuff\morse_translater.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -298,7 +332,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="swissbit_tools" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tic_tac_toe.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Jake\PycharmProjects\test_stuff\tic_tac_toe.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -316,7 +350,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="swissbit_tools" />
-      <option name="SCRIPT_NAME" value="C:\Users\Jake\PycharmProjects\swissbit_tools\tic_tac_toe.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Jake\PycharmProjects\test_stuff\tic_tac_toe.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -412,18 +446,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.tic_tac_toe" />
       <item index="1" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
-      <item index="2" class="java.lang.String" itemvalue="Python.fsync_parser" />
-      <item index="3" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
-      <item index="4" class="java.lang.String" itemvalue="Python.tkinter_testing" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Display_Test" />
+      <item index="2" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
+      <item index="3" class="java.lang.String" itemvalue="Python.tkinter_testing" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Display_Test" />
+      <item index="5" class="java.lang.String" itemvalue="Python.morse_translater" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Display_Test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
-        <item index="3" class="java.lang.String" itemvalue="Python.tkinter_testing" />
-        <item index="4" class="java.lang.String" itemvalue="Python.fsync_parser" />
+        <item index="0" class="java.lang.String" itemvalue="Python.morse_translater" />
+        <item index="1" class="java.lang.String" itemvalue="Python.NVMe_WAF" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Display_Test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.ProcessLongPowerOn" />
+        <item index="4" class="java.lang.String" itemvalue="Python.tkinter_testing" />
       </list>
     </recent_temporary>
   </component>
@@ -574,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519334665777</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added a pillow library for maybe a pixel based display? &#10;Updated NVMe_WAF to read the output .txt log and make a sorted .csv log for easy analysis">
+      <created>1519416770348</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1519416770348</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -587,19 +628,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1929" y="-9" width="1938" height="1098" extended-state="6" />
+    <frame x="-3849" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18191433" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.50289434" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32723358" sideWeight="0.49710566" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.32831" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="-3517" y="106" width="1282" height="885" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32723358" sideWeight="0.49710566" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.38660398" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" x="-1119" y="71" width="810" height="722" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935413" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -672,7 +713,8 @@
     <MESSAGE value="Added Labels and moved player list clearing to the command line as opt -i. also cleaned up unused imports on NVMe_WAF" />
     <MESSAGE value="Finally removed the test function. It's done!" />
     <MESSAGE value="JK, wrote some doc strings. Not all of em though" />
-    <option name="LAST_COMMIT_MESSAGE" value="JK, wrote some doc strings. Not all of em though" />
+    <MESSAGE value="Added a pillow library for maybe a pixel based display? &#10;Updated NVMe_WAF to read the output .txt log and make a sorted .csv log for easy analysis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a pillow library for maybe a pixel based display? &#10;Updated NVMe_WAF to read the output .txt log and make a sorted .csv log for easy analysis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -684,33 +726,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Get_Sample_Info.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ParseLongPowerOn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2877">
-          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NVMe_WAF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4326">
-          <caret line="217" column="0" lean-forward="false" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-          <folding>
-            <element signature="e#644#1094#0" expanded="false" />
-            <element signature="e#1141#1418#0" expanded="false" />
-            <element signature="e#1462#1733#0" expanded="false" />
-            <element signature="e#1776#2161#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ProcessLongPowerOn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9135">
@@ -728,7 +743,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forRuby.py">
+    <entry file="file://$PROJECT_DIR$/../test_stuff/forRuby.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -869,6 +884,7 @@
         <state relative-caret-position="4326">
           <caret line="217" column="0" lean-forward="true" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
           <folding>
+            <element signature="e#0#30#0" expanded="true" />
             <element signature="e#644#1094#0" expanded="false" />
             <element signature="e#1141#1418#0" expanded="false" />
             <element signature="e#1462#1733#0" expanded="false" />
@@ -894,7 +910,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forRuby.py">
+    <entry file="file://$PROJECT_DIR$/../test_stuff/forRuby.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
@@ -1154,7 +1170,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forRuby.py">
+    <entry file="file://$PROJECT_DIR$/../test_stuff/forRuby.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
@@ -1339,7 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-394">
           <caret line="794" column="8" lean-forward="false" selection-start-line="794" selection-start-column="8" selection-end-line="794" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1361,26 +1376,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Display_Test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Display_Test.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/table.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="214" column="6" lean-forward="false" selection-start-line="214" selection-start-column="6" selection-end-line="214" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tic_tac_toe.py">
+    <entry file="file://$PROJECT_DIR$/../test_stuff/tic_tac_toe.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <element signature="e#604#1210#0" expanded="false" />
@@ -1436,16 +1443,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../test_stuff/morse_translater.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test_stuff/character.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NVMe_WAF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="226" column="45" lean-forward="false" selection-start-line="226" selection-start-column="45" selection-end-line="226" selection-end-column="45" />
+        <state relative-caret-position="861">
+          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
             <element signature="e#644#1094#0" expanded="false" />
             <element signature="e#1141#1418#0" expanded="false" />
             <element signature="e#1462#1733#0" expanded="false" />
             <element signature="e#1776#2161#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test_stuff/matplotlibtest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
