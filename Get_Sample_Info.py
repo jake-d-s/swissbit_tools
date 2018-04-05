@@ -26,7 +26,7 @@ def main():
 
     while True:
         root.filename = filedialog.askopenfilename(initialdir=os.getcwd(),
-                                                   title='Select BEFORE Test Log Page 02 (SMART)',
+                                                   title='Select IDFY Ascii dump',
                                                    filetypes=(('text files', '*.txt'), ('all files', '*.*')))
         # if we don't get a filename just bail
         if root.filename:

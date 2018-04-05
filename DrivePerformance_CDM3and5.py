@@ -61,6 +61,8 @@ class DriveData:
         self.description = ''
         self.run_number = 0
         self.cdmVersion = 0
+        self.queue_depth = 32
+        self.thread_count = 4
         self.seq_read = 0
         self.seq_write = 0
         self.seq_read_QD_32 = 0
@@ -81,6 +83,7 @@ class DriveData:
         :returns string: string representation of a DriveData object
         """
         self_string = self.description + ',' + str(self.run_number) + ',' + str(self.cdmVersion) + ',' + \
+                      str(self.queue_depth) + ',' + str(self.thread_count) + ',' + \
                       str(self.seq_read) + ',' + str(self.seq_write) + ',' + \
                       str(self.seq_read_QD_32) + ',' + str(self.seq_write_QD_32) + ',' + \
                       str(self.rand_read_512) + ',' + str(self.rand_write_512) + ',' + \
@@ -95,12 +98,13 @@ class DriveData:
         """Static method to return the header record for a drive data csv file
         :returns string: header record for the csv file
         """
-        return 'Drive,Run Number,CDM Version,Sequential Read,Sequential Write,' + \
-               'Sequential Read (QD=32),Sequential Write (QD=32),' + \
-               'Random Read 512KB,Random Write 512KB,' + \
-               'Random Read 4KB (QD=1),Random Read 4KB (QD=1) IOPS,Random Write 4KB (QD=1),' + \
-               'Random Write 4KB (QD=1) IOPS,Random Read 4KB (QD=32),Random Read 4KB (QD=32) IOPS,' + \
-               'Random Write 4KB (QD=32),Random Write 4KB (QD=32) IOPS\n'
+        return 'Drive,Run Number,CDM Version,' + \
+               'Multi Queue Depth,Multi Thread Count,Sequential Read,Sequential Write,' + \
+               'Sequential Read (Multi Queue & Thread),Sequential Write (Multi Queue & Thread),' + \
+               'Random Read 512KB (Single Queue & Thread),Random Write 512KB (Single Queue & Thread),' + \
+               'Random Read 4KB (Single Queue & Thread),Random Read 4KB (Single Queue & Thread) IOPS,Random Write 4KB (Single Queue & Thread),' + \
+               'Random Write 4KB (Single Queue & Thread) IOPS,Random Read 4KB (Multi Queue & Thread),Random Read 4KB (Multi Queue & Thread) IOPS,' + \
+               'Random Write 4KB (Multi Queue & Thread),Random Write 4KB (Multi Queue & Thread) IOPS\n'
 
 
 def read_file(file_name, verbose=True):
@@ -198,46 +202,48 @@ def build_drive_list(text, verbose=False):
                 total_results.append(drive)
                 drive_active = False
         elif str(drive.cdmVersion) == "5":
-            if 'Sequential Read (Q= 32,T=' in line and drive_active:
-                data = re.search('Sequential Read \(Q= 32,T= [0-9]*\) : (.*) MB/s', line)
+            if 'Sequential Read (Q=' in line and drive_active:
+                data = re.search('Sequential Read \(Q=([0-9]+),T=([0-9]+)\) : (.*) MB/s', line)
                 if data:
-                    drive.seq_read_QD_32 = data.group(1).strip()
+                    drive.queue_depth = data.group(1).strip()
+                    drive.thread_count = data.group(2).strip()
+                    drive.seq_read_QD_32 = data.group(3).strip()
                     continue
-            elif 'Sequential Write (Q= 32,T=' in line and drive_active:
-                data = re.search('Sequential Write \(Q= 32,T= [0-9]*\) : (.*) MB/s', line)
+            elif 'Sequential Write (Q=' in line and drive_active:
+                data = re.search('Sequential Write \(Q=([0-9]+),T=([0-9]+)\) : (.*) MB/s', line)
                 if data:
-                    drive.seq_write_QD_32 = data.group(1).strip()
+                    drive.seq_write_QD_32 = data.group(3).strip()
                     continue
-            elif 'Random Read 4KiB (Q= 32,T=' in line and drive_active:
-                data = re.search('Random Read 4KiB \(Q= 32,T= [0-9]*\) : (.*) MB/s.*\[(.*)IOPS\]', line)
+            elif 'Random Read 4KiB (Q=' in line and drive_active and 'Q= 1,' not in line:
+                data = re.search('Random Read 4KiB \(Q=([0-9]+),T=([0-9]+)\) : (.*) MB/s.*\[(.*)IOPS\]', line)
                 if data:
-                    drive.rand_read_4k_QD_32 = data.group(1).strip()
-                    drive.rand_read_4k_QD_32_IOPS = data.group(2).strip()
+                    drive.rand_read_4k_QD_32 = data.group(3).strip()
+                    drive.rand_read_4k_QD_32_IOPS = data.group(4).strip()
                     continue
-            elif 'Random Write 4KiB (Q= 32,T=' in line and drive_active:
-                data = re.search('Random Write 4KiB \(Q= 32,T= [0-9]*\) : (.*) MB/s.*\[(.*)IOPS\]', line)
+            elif 'Random Write 4KiB (Q=' in line and drive_active and 'Q= 1,' not in line:
+                data = re.search('Random Write 4KiB \(Q=([0-9]+),T=([0-9]+)\) : (.*) MB/s.*\[(.*)IOPS\]', line)
                 if data:
-                    drive.rand_write_4k_QD_32 = data.group(1).strip()
-                    drive.rand_write_4k_QD_32_IOPS = data.group(2).strip()
+                    drive.rand_write_4k_QD_32 = data.group(3).strip()
+                    drive.rand_write_4k_QD_32_IOPS = data.group(4).strip()
                     continue
             elif 'Sequential Read (T=' in line and drive_active:
-                data = re.search('Sequential Read \(T= [0-9]*\) : (.*) MB/s', line)
+                data = re.search('Sequential Read \(T= 1\) : (.*) MB/s', line)
                 if data:
                     drive.seq_read = data.group(1).strip()
                     continue
             elif 'Sequential Write (T=' in line and drive_active:
-                data = re.search('Sequential Write \(T= [0-9]*\) : (.*) MB/s', line)
+                data = re.search('Sequential Write \(T= 1\) : (.*) MB/s', line)
                 if data:
                     drive.seq_write = data.group(1).strip()
                     continue
             elif 'Random Read 4KiB (Q= 1,T=' in line and drive_active:
-                data = re.search('Random Read 4KiB \(Q= 1,T= [0-9]*\) : (.*) MB/s.*\[(.*)IOPS\]', line)
+                data = re.search('Random Read 4KiB \(Q= 1,T= 1\) : (.*) MB/s.*\[(.*)IOPS\]', line)
                 if data:
                     drive.rand_read_4k_QD_1 = data.group(1).strip()
                     drive.rand_read_4k_QD_1_IOPS = data.group(2).strip()
                     continue
             elif 'Random Write 4KiB (Q= 1,T=' in line and drive_active:
-                data = re.search('Random Write 4KiB \(Q= 1,T= [0-9]*\) : (.*) MB/s.*\[(.*)IOPS\]', line)
+                data = re.search('Random Write 4KiB \(Q= 1,T= 1\) : (.*) MB/s.*\[(.*)IOPS\]', line)
                 if data:
                     drive.rand_write_4k_QD_1 = data.group(1).strip()
                     drive.rand_write_4k_QD_1_IOPS = data.group(2).strip()
